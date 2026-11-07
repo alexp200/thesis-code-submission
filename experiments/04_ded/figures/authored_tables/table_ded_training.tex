@@ -1,0 +1,11 @@
+\begin{tabularx}{\linewidth}{@{}llrrrX@{}}
+  \toprule
+  Model & Stage & Steps & Adam LR & $\lambda$ & Batching \\
+  \midrule
+  \Ac{NODE} & Derivative & $20000$ & $10^{-3}$ & $0$ & Mini-batch, $128$ samples \\
+       & Trajectory & $15000$ & $10^{-4}$ & $10^{-5}$ & Full batch \\
+  \addlinespace
+  \Ac{sPHNN} & Derivative & $20000$ & $10^{-3}$ & $0$ & Mini-batch, $128$ samples \\
+        & Trajectory & $10000$ & $10^{-5}$ & $10^{-6}$ & Full batch \\
+  \bottomrule
+\end{tabularx}

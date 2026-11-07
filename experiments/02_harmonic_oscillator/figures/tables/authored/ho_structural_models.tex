@@ -1,0 +1,24 @@
+\begin{tabularx}{\linewidth}{@{}p{0.18\linewidth}XX@{}}
+\toprule
+Setting & \ac{NODE} & Conservative \ac{sPHNN} \\
+\midrule
+Vector field
+  & \ac{MLP} $2\to256\to2$, $\tanh$ hidden activation
+  & $\boldsymbol J\nabla\mathcal{H}_{\boldsymbol\theta}(\boldsymbol x)$,
+    constant learned skew-symmetric $\boldsymbol J$ \\
+Hamiltonian
+  & Not applicable
+  & Normalised sum of a learned positive-definite quadratic form
+    and a softplus \ac{FICNN} with hidden widths $[32,32]$ \\
+Equilibrium
+  & Not constrained
+  & Normalisation at the origin, $\epsilon_H=10^{-6}$ \\
+Parameter count & $d_\theta=1282$ & $d_\theta=1259$ \\
+Initialisation
+  & Semi-orthogonal weights, gain 1.
+    Biases uniform on
+    $[-1/\sqrt{d_{\mathrm{in}}},1/\sqrt{d_{\mathrm{in}}}]$
+  & Matrix and network weights use fan-in variance scaling
+    with scale $10^{-4}$ and a truncated-normal initialiser \\
+\bottomrule
+\end{tabularx}

@@ -1,0 +1,123 @@
+{
+ "constants": {
+  "selection_pool_sorted": [
+   745,
+   795,
+   835,
+   851,
+   853,
+   861,
+   868,
+   873,
+   874,
+   888,
+   899,
+   902,
+   905,
+   906,
+   917
+  ],
+  "ap15_test_set": [
+   313,
+   320,
+   344,
+   378,
+   383,
+   407,
+   412,
+   415,
+   461,
+   462,
+   466,
+   467,
+   474,
+   508,
+   528
+  ],
+  "original_starts_key_index_order": {
+   "0": 853,
+   "1": 917,
+   "2": 874,
+   "3": 906,
+   "4": 888,
+   "5": 835,
+   "6": 868,
+   "7": 899,
+   "8": 902,
+   "9": 851
+  },
+  "original_start_draw": "np.random.default_rng(20261012).choice(sorted(pool), size=10, replace=False)",
+  "additional_starts_key_index_order": {
+   "0": 745,
+   "1": 795,
+   "2": 861,
+   "3": 873,
+   "4": 905
+  },
+  "seed_set_offsets": {
+   "A": 0,
+   "B": 50000,
+   "C": 70000
+  },
+  "key_recipe": "b = 7000000 + 100000*p + 1000*(n_D-1) + delta_X (original starts, key index p); 8000000 + 100000*i + 1000*(n_D-1) + delta_X (additional starts, key index i); member keys b + k (k = 0, 1, 2); optimiser key b + 1",
+  "roles": "A: main training schedule of all AL / Random paths and the exhaustive n_D = 2 errors; B: second exhaustive n_D = 2 set; A, B, C initial models: acquisition-sensitivity analysis (C is not a full AL-path repetition)",
+  "random_rng": {
+   "stored_extension": "np.random.default_rng(20262012 + p).permutation(sorted(remaining_ids)), original starts only",
+   "repeated": "np.random.default_rng([20263012, s, r]).permutation(sorted(remaining_ids)), r = 0..9, all 15 starts, prefixes n_D = 2..5, shared across architectures"
+  },
+  "tie_tolerance_K": 1e-12
+ },
+ "cross_checks": {
+  "al_fits_shared_by_several_records": 307,
+  "al_records_in_shared_fits": 962,
+  "al_unique_recorded_fits": 1745,
+  "al_records": 2400,
+  "al_recipe_key_mismatches": [],
+  "landscape_records": 840,
+  "landscape_by_set": {
+   "A": 420,
+   "B": 420
+  },
+  "landscape_recipe_key_mismatches": [],
+  "n1_records": 90,
+  "n1_recipe_key_mismatches": [],
+  "random_repeat_rows": 1180,
+  "random_repeat_trainings": 880,
+  "random_repeat_missing_records": 0,
+  "random_repeat_recipe_key_mismatches": [],
+  "stored_random_extension_matches_recomputation": true,
+  "repeated_random_tails_match_recomputation": true,
+  "plan_copies": {
+   "warmstart_small_plan.json": {
+    "source": "runs/03_AL_chicken/warmstart_path_AL/small/plan.json",
+    "sha256": "7342a8bcf4e5df9bca82b163e4a841d57672f009e3967150423ae57cadbbb4f4"
+   },
+   "warmstart_small_extra5_plan.json": {
+    "source": "runs/03_AL_chicken/warmstart_path_AL/small_extra5/run/plan.json",
+    "sha256": "34be39be969076202e07a1523c1a7038fd37b8bd1fa15078122dd1bf68de7e9e"
+   },
+   "warmstart_small_extra5_manifest.json": {
+    "source": "runs/03_AL_chicken/warmstart_path_AL/small_extra5/run/manifest.json",
+    "sha256": "433deecaae216a12612ff96a6d369b29e812826e6ad8aaa2095eb35edebbe42d"
+   },
+   "random_repeats_plan.json": {
+    "source": "final_experiments/03_AL_chicken/investigations/random_repeats/plan.json",
+    "sha256": "18e991bf20e9f3c66d5beb47a332163fa14bfbbc176576e0e871c058592edf88"
+   },
+   "random_repeats_tasks.tsv": {
+    "source": "final_experiments/03_AL_chicken/investigations/random_repeats/tasks.tsv",
+    "sha256": "993a97c43d1655fa858561b306a53ebb33596e02d8c666fb9d7063dc3e8585e4"
+   }
+  },
+  "pick_audit": {
+   "total": 180,
+   "agree": 177,
+   "differences": [
+    "NODE/DE/sum_marginal start 873: actual 874, diagnostic 861",
+    "NODE/DE/sum_variance start 873: actual 874, diagnostic 861",
+    "NODE/DE/sum_marginal start 905: actual 795, diagnostic 874"
+   ]
+  },
+  "dataset_sha256_original_equals_additional": true
+ }
+}

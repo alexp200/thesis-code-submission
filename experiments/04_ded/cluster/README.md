@@ -1,0 +1,1 @@
+`config.example.sh` is the template for the Slurm settings (account, modules, repository directory). Copy it to `config.local.sh` and fill in the values; the `submit.sh`/`launch.sh` scripts of the experiments source that file.

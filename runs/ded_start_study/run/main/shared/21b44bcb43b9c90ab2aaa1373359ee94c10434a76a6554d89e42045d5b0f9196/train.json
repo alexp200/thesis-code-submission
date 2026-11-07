@@ -1,0 +1,252 @@
+{
+  "artifacts": {
+    "checkpoint": {
+      "path": "model.eqx",
+      "sha256": "415d9a0468e33ae213fb7d120654974860d1a12359ec470df6f0364c37c404da"
+    },
+    "history": {
+      "path": "history.pkl",
+      "sha256": "bb7771030393640e45584f5927ad3f8bdd50e6600397db52adf68dbfaa5b72e4"
+    },
+    "pod": {
+      "path": "pod.npz",
+      "sha256": "e333c962e035450d732d4a0010479eb7d580d4307a35f9eb4be193872f97f1aa"
+    }
+  },
+  "checkpoint_sha256": "415d9a0468e33ae213fb7d120654974860d1a12359ec470df6f0364c37c404da",
+  "cutoff": null,
+  "dataset_size": 2,
+  "dropped_indices": [],
+  "dropped_train_rmse": [],
+  "effective_ensemble_size": 3,
+  "ensemble_mean_rmse_K": 16.79236053254738,
+  "ensemble_size": 3,
+  "evaluation": {
+    "all_members": {
+      "iqr_K": 6.582400428986006,
+      "median_K": 22.111349198172192,
+      "q25_K": 18.336975287999152,
+      "q75_K": 24.919375716985158,
+      "status": "complete",
+      "total_count": 3,
+      "valid_count": 3
+    },
+    "distribution": "K3 training members conditional on this acquisition replicate",
+    "evaluation_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "filtered_ensemble_mean_rmse_K": 16.79236053254738,
+    "members": [
+      {
+        "member_index": 0,
+        "per_trajectory_rmse_K": [
+          36.603513297656775,
+          23.277487730963074,
+          18.254875974168254,
+          16.71761763521473,
+          16.42254026243901,
+          22.650174242837892,
+          11.949968602515467,
+          10.536718793745669,
+          11.377778446016212,
+          12.415209507503263,
+          13.792117015462205,
+          14.34666674859332,
+          15.682192162931322,
+          15.667307294991112,
+          15.40408433906964,
+          27.53214377037538,
+          31.104671385123673,
+          29.95597052779737,
+          27.209599781339413,
+          24.500830537116965,
+          50.04027983493765,
+          51.086031564925186,
+          46.7787807251747,
+          41.27024341748371,
+          36.22339369674986
+        ],
+        "rmse_K": 27.72740223579812,
+        "status": "passed",
+        "training_filter_kept": true
+      },
+      {
+        "member_index": 1,
+        "per_trajectory_rmse_K": [
+          15.58790669478501,
+          12.105175424499535,
+          11.95763929691284,
+          12.781149922692343,
+          13.713763970373169,
+          12.236141036928302,
+          9.50492822386719,
+          10.076221242486664,
+          11.279590887838143,
+          12.426822993904523,
+          12.892772124811286,
+          10.470869712102441,
+          10.565350619035419,
+          11.349079454542444,
+          12.218249554675305,
+          18.466541417105145,
+          14.857046756678525,
+          13.486338744047563,
+          13.130137999088065,
+          13.252637738030513,
+          27.14887125943143,
+          21.40507755997548,
+          18.20947096312355,
+          16.43340924597208,
+          15.506042082140471
+        ],
+        "rmse_K": 14.562601377826116,
+        "status": "passed",
+        "training_filter_kept": true
+      },
+      {
+        "member_index": 2,
+        "per_trajectory_rmse_K": [
+          29.91308437361115,
+          19.95803341739262,
+          15.66361277873866,
+          14.030891849520712,
+          13.60718282960178,
+          17.72394626639453,
+          10.34161981138693,
+          9.18992896897754,
+          9.971372056800215,
+          10.99740171738044,
+          11.111371191348804,
+          10.832892961238205,
+          12.37173017374173,
+          13.452043699039193,
+          14.119908513097196,
+          22.372872494033597,
+          23.18021595449768,
+          22.939908762098792,
+          22.251248617360364,
+          21.475125156869918,
+          39.536333683606074,
+          37.98597229957068,
+          35.45449611716546,
+          32.89750293594672,
+          30.601678991534474
+        ],
+        "rmse_K": 22.111349198172192,
+        "status": "passed",
+        "training_filter_kept": true
+      }
+    ],
+    "quantile_method": "linear",
+    "schema_version": 1,
+    "scope": "all evaluation trajectories, including selected training data",
+    "seconds": 5.077133566956036,
+    "training_filtered_members": {
+      "iqr_K": 6.582400428986006,
+      "median_K": 22.111349198172192,
+      "q25_K": 18.336975287999152,
+      "q75_K": 24.919375716985158,
+      "status": "complete",
+      "total_count": 3,
+      "valid_count": 3
+    },
+    "units": "K"
+  },
+  "execution": {
+    "cpu_affinity": [
+      3,
+      4,
+      5,
+      20,
+      21,
+      23,
+      33,
+      34,
+      46,
+      47,
+      59,
+      60,
+      72,
+      73,
+      84,
+      85
+    ],
+    "hostname": "mpsd0009",
+    "native_threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "pid": 1938232,
+    "slurm_array_job_id": "55469202",
+    "slurm_array_task_id": "37",
+    "slurm_job_id": "55472939",
+    "timestamp_utc": "2026-10-17T21:58:49.228385+00:00",
+    "xla_flags": " --xla_cpu_parallel_codegen_split_count=1"
+  },
+  "filter_seconds": 5.343043609987944,
+  "history_sha256": "bb7771030393640e45584f5927ad3f8bdd50e6600397db52adf68dbfaa5b72e4",
+  "initialization_seeds": [
+    102511998,
+    26177420,
+    1550993530
+  ],
+  "manifest_sha256": "aadf9c7f33dbb437d71f0f1912388204f2634453ff3346c4c4d36c5f6ea4daa5",
+  "model_class": "NODE",
+  "pod_sha256": "e333c962e035450d732d4a0010479eb7d580d4307a35f9eb4be193872f97f1aa",
+  "request": {
+    "dataset_size": 2,
+    "ensemble_size": 3,
+    "id": "21b44bcb43b9c90ab2aaa1373359ee94c10434a76a6554d89e42045d5b0f9196",
+    "model_class": "NODE",
+    "role": "reporting",
+    "start": 10,
+    "train_ids": [
+      10,
+      8
+    ],
+    "training_key": 9401000
+  },
+  "status": "passed",
+  "train_ids": [
+    10,
+    8
+  ],
+  "train_seconds": 1774.319442450069,
+  "training_hyperparameters": {
+    "derivative_l2": 0.0,
+    "derivative_lr": 0.001,
+    "derivative_steps": 20000,
+    "finetune_l2": 1e-05,
+    "finetune_lr": 0.0001,
+    "finetune_objective": "MSE + 0.5 * finetune_l2 * ||theta_laplace||^2",
+    "finetune_steps": 15000,
+    "procedure": "derivative_then_trajectory_finetune"
+  },
+  "training_key": 9401000,
+  "wall_seconds": 1790.8958732300089
+}

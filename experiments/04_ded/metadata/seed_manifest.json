@@ -1,0 +1,93 @@
+{
+ "constants": {
+  "starts_key_index_order": [
+   12,
+   4,
+   24,
+   22,
+   10,
+   20,
+   2,
+   14,
+   18,
+   6
+  ],
+  "packages": {
+   "A": "start study main: starts 12,4,24,22,10; LA/DE/MoLA, Random 0..2",
+   "T": "final extension: Random 3..5 of the same starts",
+   "G6": "final extension: starts 20,2,14,18,6, LA/DE/MoLA, Random 0..5"
+  },
+  "reporting_key": "9000000 + 100000*i + 1000*(n_D-1)",
+  "la_acquisition_key": "9500000 + 100000*i + 1000*(n_D-1)",
+  "random_tail": "np.random.default_rng([20264001, s, r]).permutation([j for j in range(25) if j != s])",
+  "key_collision_note": "the numeric reporting keys of key indices i >= 5 (9500000 + ...) fall into the numeric range of the acquisition keys of i = 0 (9500000 + ...); the two roles are distinct (request role, ensemble size, training set, training record); see cross_checks.key_collision_example for the seeds",
+  "training_order": "start followed by the other selected IDs in increasing order (`train_ids_training_order`); the acquisition order is `train_ids_acquisition_order`",
+  "member_seeds": "recorded `initialization_seeds` (JAX key splitting, not key + k); re-derived as a cross-check"
+ },
+ "cross_checks": {
+  "path_records": 900,
+  "unique_reporting_nodes": 621,
+  "nodes_read_by_several_path_occurrences": 98,
+  "reporting_recipe_key_mismatches": [],
+  "reporting_seed_rederivation_mismatches": 0,
+  "acquisition_model_records": 80,
+  "acquisition_recipe_key_mismatches": 0,
+  "acquisition_seed_rederivation_mismatches": 0,
+  "local_jax_version": "0.10.1",
+  "recorded_jax_version": "0.10.1",
+  "key_collision_example": {
+   "key": 9500000,
+   "reporting_member_seeds": [
+    608874766,
+    133596230,
+    471966894
+   ],
+   "acquisition_member_seeds": [
+    608874766
+   ]
+  },
+  "random_tails_in_plans": 120,
+  "random_tails_match_recomputation": true,
+  "random_tails_identical_across_architectures": true,
+  "distinct_start_r_pairs": 60,
+  "plan_copies": {
+   "start_study_main_plan.json": {
+    "source": "runs/ded_start_study/run/main/plan.json",
+    "sha256": "89eed70b6d511bc06ed1126716a971627e54c628821121a0ba251d3bbf448bb3"
+   },
+   "start_study_main_manifest.json": {
+    "source": "runs/ded_start_study/run/main/manifest.json",
+    "sha256": "c7574006d91b46aa87516d1683c1858caf79f9162584cc2e9af4afba639d4bfa"
+   },
+   "final_extension_plan.json": {
+    "source": "runs/ded_final_extension/run/plan.json",
+    "sha256": "5bfef8623034ee4a7e2907be0a1eb36d9976d6b2ab9442195bcc6ce00f8dd5d6"
+   },
+   "final_extension_manifest.json": {
+    "source": "runs/ded_final_extension/run/manifest.json",
+    "sha256": "d409c518051877c4086390b6e187e122dec1587132a2f5fca21c411707ac67e5"
+   }
+  },
+  "dataset_sha256_equal": true,
+  "loader_records_final_cohort": 900,
+  "manifest_records": 900,
+  "manifest_equals_loader_set": true,
+  "only_in_loader": 0,
+  "only_in_manifest": 0,
+  "figure_cohort_starts": [
+   2,
+   4,
+   6,
+   10,
+   12,
+   14,
+   18,
+   20,
+   22,
+   24
+  ],
+  "figure_cohort_rows_AL": 300,
+  "figure_cohort_random_rows": 600,
+  "excluded_packages": []
+ }
+}

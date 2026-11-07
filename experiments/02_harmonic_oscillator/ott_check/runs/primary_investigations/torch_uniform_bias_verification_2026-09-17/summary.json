@@ -1,0 +1,512 @@
+{
+  "purpose": "Primary Ott-style Neural ODE + Full-Laplace harmonic oscillator verification (isolated torch-uniform bias initialization, final configuration)",
+  "config": {
+    "width": 256,
+    "train_steps": 5000,
+    "learning_rate": 0.001,
+    "l2_regularization": 0.0,
+    "n_trajectories": 16,
+    "n_time": 50,
+    "n_eval": 300,
+    "grid_size": 35,
+    "seed": 17,
+    "m": 1.0,
+    "k": 2.0,
+    "observation_noise_variance": 0.3,
+    "max_steps": 65536,
+    "observed_radius": 0.45,
+    "field_q_limits": [
+      -6.0,
+      6.0
+    ],
+    "field_p_limits": [
+      -8.0,
+      8.0
+    ],
+    "field_uncertainty_plot_vmax": 3.0,
+    "field_uncertainty_color_gamma": 1.0,
+    "field_uncertainty_contour_levels": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      4.0
+    ],
+    "calibrate_mll": true,
+    "fixed_prior_precision": 1.0,
+    "fixed_sigma_noise": 0.55,
+    "alpha_only_mll_steps": 100,
+    "alpha_only_mll_learning_rate": 0.1,
+    "alpha_only_mll_initial_prior_precision": 1.0,
+    "sensitivity_prior_precision": 0.1,
+    "use_euler_solver": true,
+    "euler_dt0": 0.02,
+    "weight_initialization": "orthogonal",
+    "orthogonal_gain": 1.0,
+    "bias_initialization": "torch_uniform",
+    "training_mode": "full_trajectory",
+    "window_points": 2,
+    "batch_size": null,
+    "run_laplace": true,
+    "max_map_train_rmse_for_laplace": 0.75,
+    "force_laplace": false
+  },
+  "datasets": [
+    "lower_half",
+    "full_cycle"
+  ],
+  "results": [
+    {
+      "dataset": "lower_half",
+      "paper_name": "dataset-lower-half",
+      "figure9_label": "Figure 9(a-b): dataset-lower-half",
+      "dataset_note": "Appendix A.2 explicitly defines this dataset.",
+      "training_mode": "full_trajectory",
+      "window_points": null,
+      "batch_size": 16,
+      "effective_training_examples_available": 16,
+      "t_train_end": 2.221441469079183,
+      "t_eval_end": 10.0,
+      "train_seconds": 55.23062604095321,
+      "loss_steps": [
+        0,
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
+      ],
+      "loss_values": [
+        13.268345216766807,
+        0.3765657902975534,
+        0.3122243840593485,
+        0.3003649681961726,
+        0.29949042890714855,
+        0.2991733191308948,
+        0.2988039947882157,
+        0.2984161208978939,
+        0.2980661221618348,
+        0.2977771529316213,
+        0.29754667907245236,
+        0.29736277946058964,
+        0.297214006272706,
+        0.29709246340243944,
+        0.29699250699730817,
+        0.29690817653676266,
+        0.2968331312493474,
+        0.2967621965060598,
+        0.2966915464738779,
+        0.2966174264974207,
+        0.2965343806242913
+      ],
+      "final_logged_training_loss": 0.2965343806242913,
+      "map_fit": {
+        "final_training_mse_against_noisy_data": 0.29653438062429155,
+        "map_train_rmse_against_clean_data": 0.059144444910113766,
+        "map_train_rmse_against_noisy_data": 0.5445497044570785
+      },
+      "parameter_squared_norm": 54.978239097260946,
+      "representative_trajectory": {
+        "map_rmse_train_window_representative_traj": 0.043562666008183495,
+        "map_rmse_extrapolation_window_representative_traj": 1.0348567746448192,
+        "mean_trajectory_std_train_window": 0.05813020135242679,
+        "mean_trajectory_std_extrapolation_window": 10.116033475388312
+      },
+      "map_reproduction": "successful",
+      "map_rmse_gate_for_laplace": 0.75,
+      "laplace_run": true,
+      "laplace_skip_reason": null,
+      "map_diagnostic_figure": "figures/lower_half_map_diagnostic.png",
+      "training_loss_figure": "figures/lower_half_training_loss.png",
+      "laplace_seconds": 3.7010917080333456,
+      "prior_precision": 0.3051819500238254,
+      "sigma_noise": 0.5474302637228916,
+      "parameter_count": 1282,
+      "mean_vector_field_uncertainty_observed_region": 0.4431010902668468,
+      "mean_vector_field_uncertainty_unobserved_region": 4.322914149983499,
+      "unobserved_over_observed_uncertainty_ratio": 9.75604494085115,
+      "vector_field_uncertainty_scalar": "L2 norm of componentwise epistemic standard deviations",
+      "max_vector_field_uncertainty": 13.904384316170228,
+      "p95_vector_field_uncertainty": 10.760908333939993,
+      "prior_precision_sensitivity": {
+        "mll_calibrated": {
+          "prior_precision": 0.3051819500238254,
+          "mean_component_epistemic_std_train": 0.041008353412533526,
+          "mean_component_epistemic_std_extrapolation": 6.852243239354771,
+          "max_component_epistemic_std_extrapolation": 20.62390865765768,
+          "mean_component_predictive_std_train": 0.5491027977652775,
+          "mean_component_predictive_std_extrapolation": 6.899758620532634,
+          "max_component_predictive_std_extrapolation": 20.631172729950354,
+          "epistemic_std_final_time": [
+            15.77303198781352,
+            7.367276071645578
+          ],
+          "predictive_std_final_time": [
+            15.78252888425135,
+            7.38758665664784
+          ]
+        },
+        "fixed_0p1": {
+          "prior_precision": 0.1,
+          "mean_component_epistemic_std_train": 0.04396014669148863,
+          "mean_component_epistemic_std_extrapolation": 10.850097306666461,
+          "max_component_epistemic_std_extrapolation": 32.363863993572814,
+          "mean_component_predictive_std_train": 0.5493446287163364,
+          "mean_component_predictive_std_extrapolation": 10.885667401657667,
+          "max_component_predictive_std_extrapolation": 32.36849351588854,
+          "epistemic_std_final_time": [
+            24.969372475772964,
+            12.066818101546566
+          ],
+          "predictive_std_final_time": [
+            24.975372704476868,
+            12.079229238219282
+          ]
+        }
+      },
+      "prior_precision_sensitivity_figure": "figures/lower_half_prior_precision_sensitivity.png",
+      "alpha_only_mll_comparison": {
+        "fixed_map_and_curvature": true,
+        "status": "completed",
+        "laplace_torch_compatibility": "scalar log prior precision optimized with Adam for 100 steps, lr=0.1, initialized at alpha=1; sigma_noise held fixed",
+        "scenarios": {
+          "joint_mll": {
+            "display_name": "production joint MLL",
+            "prior_precision": 0.3051819500238254,
+            "sigma_noise": 0.5474302637228916,
+            "optimization": "joint optimization of log(alpha) and log(sigma)",
+            "mean_component_epistemic_std_train": 0.041008353412533526,
+            "mean_component_epistemic_std_extrapolation": 6.852243239354771,
+            "max_component_epistemic_std_extrapolation": 20.62390865765768,
+            "mean_component_predictive_std_train": 0.5491027977652775,
+            "mean_component_predictive_std_extrapolation": 6.899758620532634,
+            "max_component_predictive_std_extrapolation": 20.631172729950354,
+            "epistemic_std_final_time": [
+              15.77303198781352,
+              7.367276071645578
+            ],
+            "predictive_std_final_time": [
+              15.78252888425135,
+              7.38758665664784
+            ],
+            "mean_vector_field_uncertainty_observed_region": 0.4431010902668468,
+            "mean_vector_field_uncertainty_unobserved_region": 4.322914149983499,
+            "unobserved_over_observed_uncertainty_ratio": 9.75604494085115,
+            "max_vector_field_uncertainty": 13.904384316170228,
+            "p95_vector_field_uncertainty": 10.760908333939993
+          },
+          "alpha_only_sigma_sqrt_0p3": {
+            "display_name": "alpha-only, known data noise",
+            "prior_precision": 0.30726019341679894,
+            "sigma_noise": 0.5477225575051661,
+            "initial_objective": 1365.5593780410145,
+            "final_objective": 1355.6431543768497,
+            "absolute_final_log_alpha_gradient": 0.06604615778804218,
+            "optimizer": "Adam",
+            "steps": 100,
+            "learning_rate": 0.1,
+            "initial_prior_precision": 1.0,
+            "max_centered_objective_mismatch_vs_laplace_torch": 0.0,
+            "mean_component_epistemic_std_train": 0.04101015150097186,
+            "mean_component_epistemic_std_extrapolation": 6.833341804953861,
+            "max_component_epistemic_std_extrapolation": 20.56811703725113,
+            "mean_component_predictive_std_train": 0.5493943904941446,
+            "mean_component_predictive_std_extrapolation": 6.880986069101295,
+            "max_component_predictive_std_extrapolation": 20.57540858544637,
+            "epistemic_std_final_time": [
+              15.72949315624012,
+              7.345431575829931
+            ],
+            "predictive_std_final_time": [
+              15.73902649315404,
+              7.365824124644803
+            ],
+            "mean_vector_field_uncertainty_observed_region": 0.44271503807882845,
+            "mean_vector_field_uncertainty_unobserved_region": 4.311659621631551,
+            "unobserved_over_observed_uncertainty_ratio": 9.73913070661004,
+            "max_vector_field_uncertainty": 13.864160098313638,
+            "p95_vector_field_uncertainty": 10.728022197367862
+          },
+          "alpha_only_sigma_1": {
+            "display_name": "alpha-only, laplace-torch default noise",
+            "prior_precision": 0.263904245546459,
+            "sigma_noise": 1.0,
+            "initial_objective": 1767.2606419309461,
+            "final_objective": 1755.894033334955,
+            "absolute_final_log_alpha_gradient": 0.0013905170214389623,
+            "optimizer": "Adam",
+            "steps": 100,
+            "learning_rate": 0.1,
+            "initial_prior_precision": 1.0,
+            "max_centered_objective_mismatch_vs_laplace_torch": 0.0,
+            "mean_component_epistemic_std_train": 0.07023345645312172,
+            "mean_component_epistemic_std_extrapolation": 8.020544841170958,
+            "max_component_epistemic_std_extrapolation": 24.26832763227561,
+            "mean_component_predictive_std_train": 1.0026944643182905,
+            "mean_component_predictive_std_extrapolation": 8.138028624437585,
+            "max_component_predictive_std_extrapolation": 24.288921879479787,
+            "epistemic_std_final_time": [
+              18.426396790815353,
+              8.415309677157422
+            ],
+            "predictive_std_final_time": [
+              18.45351182546483,
+              8.474516916170463
+            ],
+            "mean_vector_field_uncertainty_observed_region": 0.6701629754404055,
+            "mean_vector_field_uncertainty_unobserved_region": 5.143954365245197,
+            "unobserved_over_observed_uncertainty_ratio": 7.675676743951405,
+            "max_vector_field_uncertainty": 15.783085215489967,
+            "p95_vector_field_uncertainty": 12.36611699889614
+          }
+        }
+      },
+      "alpha_only_mll_comparison_figure": "figures/lower_half_alpha_only_mll_comparison.png",
+      "laplace_figure": "figures/lower_half_verification.png",
+      "uq_qualitative_reproduction": "successful"
+    },
+    {
+      "dataset": "full_cycle",
+      "paper_name": "dataset-left-half",
+      "figure9_label": "Figure 9(c-d): caption says full-cycle-dataset",
+      "dataset_note": "The harmonic-oscillator appendix defines no full-cycle dataset. The middle Figure 9 panel is therefore treated as the Appendix A.2 dataset-left-half, consistent with Figure 6(b), Section 4.1, and the Figure 10/11 captions.",
+      "training_mode": "full_trajectory",
+      "window_points": null,
+      "batch_size": 16,
+      "effective_training_examples_available": 16,
+      "t_train_end": 2.221441469079183,
+      "t_eval_end": 10.0,
+      "train_seconds": 56.318730250000954,
+      "loss_steps": [
+        0,
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
+      ],
+      "loss_values": [
+        19.706616485780824,
+        0.4143835548603886,
+        0.3333061714388036,
+        0.31317579609647944,
+        0.30935563822003415,
+        0.30863031594389834,
+        0.3082888058347602,
+        0.3079948748116296,
+        0.30771526699814084,
+        0.30743974783320327,
+        0.30715837991682904,
+        0.3068596376794466,
+        0.30653907185257717,
+        0.3062108557600708,
+        0.30589677654497704,
+        0.30561153888428727,
+        0.3053621740675134,
+        0.3051495055592379,
+        0.3049679740172384,
+        0.30480581756618835,
+        0.3046486774679944
+      ],
+      "final_logged_training_loss": 0.3046486774679944,
+      "map_fit": {
+        "final_training_mse_against_noisy_data": 0.3046486774679946,
+        "map_train_rmse_against_clean_data": 0.04731956477932514,
+        "map_train_rmse_against_noisy_data": 0.5519498867361009
+      },
+      "parameter_squared_norm": 51.892440637853895,
+      "representative_trajectory": {
+        "map_rmse_train_window_representative_traj": 0.038552633908867,
+        "map_rmse_extrapolation_window_representative_traj": 1.2343438694126494,
+        "mean_trajectory_std_train_window": 0.06273355933316856,
+        "mean_trajectory_std_extrapolation_window": 8.3000888773072
+      },
+      "map_reproduction": "successful",
+      "map_rmse_gate_for_laplace": 0.75,
+      "laplace_run": true,
+      "laplace_skip_reason": null,
+      "map_diagnostic_figure": "figures/full_cycle_map_diagnostic.png",
+      "training_loss_figure": "figures/full_cycle_training_loss.png",
+      "laplace_seconds": 3.146928667090833,
+      "prior_precision": 0.36670753360966907,
+      "sigma_noise": 0.5552681041901512,
+      "parameter_count": 1282,
+      "mean_vector_field_uncertainty_observed_region": 0.48411180290121697,
+      "mean_vector_field_uncertainty_unobserved_region": 4.063648423325544,
+      "unobserved_over_observed_uncertainty_ratio": 8.394028815188237,
+      "vector_field_uncertainty_scalar": "L2 norm of componentwise epistemic standard deviations",
+      "max_vector_field_uncertainty": 12.005855260172476,
+      "p95_vector_field_uncertainty": 9.168228345405833,
+      "prior_precision_sensitivity": {
+        "mll_calibrated": {
+          "prior_precision": 0.36670753360966907,
+          "mean_component_epistemic_std_train": 0.044346294306378736,
+          "mean_component_epistemic_std_extrapolation": 5.651445141096224,
+          "max_component_epistemic_std_extrapolation": 20.921223353660547,
+          "mean_component_predictive_std_train": 0.5571564786274115,
+          "mean_component_predictive_std_extrapolation": 5.710843558011505,
+          "max_component_predictive_std_extrapolation": 20.928590714170948,
+          "epistemic_std_final_time": [
+            4.230292580966275,
+            20.921223353660547
+          ],
+          "predictive_std_final_time": [
+            4.266579190418153,
+            20.928590714170948
+          ]
+        },
+        "fixed_0p1": {
+          "prior_precision": 0.1,
+          "mean_component_epistemic_std_train": 0.047508459946403736,
+          "mean_component_epistemic_std_extrapolation": 9.205850032281377,
+          "max_component_epistemic_std_extrapolation": 34.50644903033863,
+          "mean_component_predictive_std_train": 0.5574286635410777,
+          "mean_component_predictive_std_extrapolation": 9.250598215334477,
+          "max_component_predictive_std_extrapolation": 34.51091635049537,
+          "epistemic_std_final_time": [
+            6.798924823981746,
+            34.49846180637648
+          ],
+          "predictive_std_final_time": [
+            6.821561509631511,
+            34.5029301606914
+          ]
+        }
+      },
+      "prior_precision_sensitivity_figure": "figures/full_cycle_prior_precision_sensitivity.png",
+      "alpha_only_mll_comparison": {
+        "fixed_map_and_curvature": true,
+        "status": "completed",
+        "laplace_torch_compatibility": "scalar log prior precision optimized with Adam for 100 steps, lr=0.1, initialized at alpha=1; sigma_noise held fixed",
+        "scenarios": {
+          "joint_mll": {
+            "display_name": "production joint MLL",
+            "prior_precision": 0.36670753360966907,
+            "sigma_noise": 0.5552681041901512,
+            "optimization": "joint optimization of log(alpha) and log(sigma)",
+            "mean_component_epistemic_std_train": 0.044346294306378736,
+            "mean_component_epistemic_std_extrapolation": 5.651445141096224,
+            "max_component_epistemic_std_extrapolation": 20.921223353660547,
+            "mean_component_predictive_std_train": 0.5571564786274115,
+            "mean_component_predictive_std_extrapolation": 5.710843558011505,
+            "max_component_predictive_std_extrapolation": 20.928590714170948,
+            "epistemic_std_final_time": [
+              4.230292580966275,
+              20.921223353660547
+            ],
+            "predictive_std_final_time": [
+              4.266579190418153,
+              20.928590714170948
+            ],
+            "mean_vector_field_uncertainty_observed_region": 0.48411180290121697,
+            "mean_vector_field_uncertainty_unobserved_region": 4.063648423325544,
+            "unobserved_over_observed_uncertainty_ratio": 8.394028815188237,
+            "max_vector_field_uncertainty": 12.005855260172476,
+            "p95_vector_field_uncertainty": 9.168228345405833
+          },
+          "alpha_only_sigma_sqrt_0p3": {
+            "display_name": "alpha-only, known data noise",
+            "prior_precision": 0.36645060723185374,
+            "sigma_noise": 0.5477225575051661,
+            "initial_objective": 1387.9798931143557,
+            "final_objective": 1380.4750169665772,
+            "absolute_final_log_alpha_gradient": 0.0439764718761027,
+            "optimizer": "Adam",
+            "steps": 100,
+            "learning_rate": 0.1,
+            "initial_prior_precision": 1.0,
+            "max_centered_objective_mismatch_vs_laplace_torch": 2.2737367544323206e-13,
+            "mean_component_epistemic_std_train": 0.043813016022309935,
+            "mean_component_epistemic_std_extrapolation": 5.633464280726454,
+            "max_component_epistemic_std_extrapolation": 20.8573196947976,
+            "mean_component_predictive_std_train": 0.5495910505499989,
+            "mean_component_predictive_std_extrapolation": 5.691676212562933,
+            "max_component_predictive_std_extrapolation": 20.86451017519922,
+            "epistemic_std_final_time": [
+              4.2169369160966195,
+              20.8573196947976
+            ],
+            "predictive_std_final_time": [
+              4.252358987002211,
+              20.86451017519922
+            ],
+            "mean_vector_field_uncertainty_observed_region": 0.47974359503579905,
+            "mean_vector_field_uncertainty_unobserved_region": 4.050630368516526,
+            "unobserved_over_observed_uncertainty_ratio": 8.443323497032331,
+            "max_vector_field_uncertainty": 11.983034366613332,
+            "p95_vector_field_uncertainty": 9.154101895483423
+          },
+          "alpha_only_sigma_1": {
+            "display_name": "alpha-only, laplace-torch default noise",
+            "prior_precision": 0.31767078204209664,
+            "sigma_noise": 1.0,
+            "initial_objective": 1773.4225540680889,
+            "final_objective": 1764.3062513320324,
+            "absolute_final_log_alpha_gradient": 0.05758655269980545,
+            "optimizer": "Adam",
+            "steps": 100,
+            "learning_rate": 0.1,
+            "initial_prior_precision": 1.0,
+            "max_centered_objective_mismatch_vs_laplace_torch": 0.0,
+            "mean_component_epistemic_std_train": 0.07510100992535362,
+            "mean_component_epistemic_std_extrapolation": 6.942146072650022,
+            "max_component_epistemic_std_extrapolation": 25.63436394705611,
+            "mean_component_predictive_std_train": 1.003015695602513,
+            "mean_component_predictive_std_extrapolation": 7.079064463802677,
+            "max_component_predictive_std_extrapolation": 25.653861599574636,
+            "epistemic_std_final_time": [
+              5.16811215861535,
+              25.63436394705611
+            ],
+            "predictive_std_final_time": [
+              5.263970296651361,
+              25.653861599574636
+            ],
+            "mean_vector_field_uncertainty_observed_region": 0.7297324050459245,
+            "mean_vector_field_uncertainty_unobserved_region": 4.962235356832958,
+            "unobserved_over_observed_uncertainty_ratio": 6.800075373548291,
+            "max_vector_field_uncertainty": 13.911601458271214,
+            "p95_vector_field_uncertainty": 10.559097639279107
+          }
+        }
+      },
+      "alpha_only_mll_comparison_figure": "figures/full_cycle_alpha_only_mll_comparison.png",
+      "laplace_figure": "figures/full_cycle_verification.png",
+      "uq_qualitative_reproduction": "successful"
+    }
+  ]
+}

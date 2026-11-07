@@ -1,0 +1,179 @@
+{
+  "artifacts": {
+    "calibration": {
+      "path": "calibration.npz",
+      "sha256": "ade1941edc1062d9bef213368be5f713d0e548b2998ecc7644576da4c88f6844"
+    }
+  },
+  "execution": {
+    "cpu_affinity": [
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+    ],
+    "hostname": "mpsc0227",
+    "native_threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "pid": 948851,
+    "slurm_array_job_id": "55582748",
+    "slurm_array_task_id": "14",
+    "slurm_job_id": "55582840",
+    "timestamp_utc": "2026-10-23T16:34:11.074280+00:00",
+    "xla_flags": " --xla_cpu_parallel_codegen_split_count=1"
+  },
+  "manifest_sha256": "d409c518051877c4086390b6e187e122dec1587132a2f5fca21c411707ac67e5",
+  "model_commit": {
+    "path": "../../shared/e39a6f5223b5a6a2b820b52316eb3e1764c0294e2fa942e7f8de56cda00ae7d3/train.json",
+    "sha256": "7d70746e5fc419dcaa37b956cec96b446a02494189f7ba68f3ce2a30a29e5580"
+  },
+  "picked_id": 23,
+  "pool_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    18,
+    19,
+    22,
+    23,
+    24
+  ],
+  "ranking": [
+    {
+      "batch_id": 23,
+      "score": -205696.51522661734
+    },
+    {
+      "batch_id": 18,
+      "score": -211302.90762026754
+    },
+    {
+      "batch_id": 3,
+      "score": -214504.85223683773
+    },
+    {
+      "batch_id": 13,
+      "score": -215786.0890228935
+    },
+    {
+      "batch_id": 8,
+      "score": -216035.92366148118
+    },
+    {
+      "batch_id": 24,
+      "score": -219126.87913444004
+    },
+    {
+      "batch_id": 22,
+      "score": -219707.061915383
+    },
+    {
+      "batch_id": 10,
+      "score": -220338.62361643082
+    },
+    {
+      "batch_id": 15,
+      "score": -221879.41509385957
+    },
+    {
+      "batch_id": 2,
+      "score": -224173.14714569645
+    },
+    {
+      "batch_id": 4,
+      "score": -224906.38398288953
+    },
+    {
+      "batch_id": 17,
+      "score": -225211.1632310259
+    },
+    {
+      "batch_id": 1,
+      "score": -225875.6455704637
+    },
+    {
+      "batch_id": 5,
+      "score": -225990.67972255204
+    },
+    {
+      "batch_id": 7,
+      "score": -230169.89614461342
+    },
+    {
+      "batch_id": 12,
+      "score": -230653.98592748048
+    },
+    {
+      "batch_id": 19,
+      "score": -231049.7790033215
+    },
+    {
+      "batch_id": 6,
+      "score": -232801.54922087764
+    },
+    {
+      "batch_id": 9,
+      "score": -233583.38009557503
+    },
+    {
+      "batch_id": 16,
+      "score": -233687.2075422096
+    },
+    {
+      "batch_id": 11,
+      "score": -234998.03399598825
+    }
+  ],
+  "request": {
+    "id": "46faaea7ef93b157cade19305660a79758c4afb5c61b7749479533cf4a1b6543",
+    "method": "LA",
+    "model_class": "sPHNN",
+    "model_id": "e39a6f5223b5a6a2b820b52316eb3e1764c0294e2fa942e7f8de56cda00ae7d3",
+    "train_ids": [
+      14,
+      0,
+      20,
+      21
+    ]
+  },
+  "sigma_noise": 0.0,
+  "status": "passed",
+  "timings": {
+    "laplace_fit_seconds": 542.6426464759861
+  },
+  "train_ids": [
+    14,
+    0,
+    20,
+    21
+  ],
+  "wall_seconds": 1118.376341664989
+}

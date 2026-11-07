@@ -1,0 +1,39 @@
+\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}X@{}}
+\toprule
+Setting & Value \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Data}} \\
+Training observations & $n_D=16$ trajectories per dataset,
+  $n_t=50$ equidistant times on $[0,T/2]$ \\
+Initial-state distribution
+  & $\boldsymbol{x}_0\sim\mathcal{N}(\boldsymbol{\mu}_0,0.2\boldsymbol I_2)$,
+    $\boldsymbol{\mu}_0=(3,0)^\top$ for \emph{lower half},
+    $(0,3\sqrt{2})^\top$ for \emph{left half} \\
+Observation noise & Independent zero-mean Gaussian noise with variance
+  $0.3$ per scalar observation \\
+Data seed & JAX key 17 folded with dataset offset 0 / 1
+  for \emph{lower half} / \emph{left half} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Training}} \\
+Ensemble & $n_{\mathrm{ens}}=10$ per model--dataset pair,
+  initialisation keys $0,\ldots,9$ \\
+Training objective
+  & $\mathrm{MSE}+\tfrac12\lambda\|\boldsymbol{\theta}\|^2$,
+    $\lambda=10^{-4}$. \ac{MSE} averages over trajectories,
+    times, and state coordinates \\
+Optimiser & Full-batch Adam, 5000 steps at learning rate $10^{-3}$ \\
+Training key & JAX key 0 folded with model offset 0 / 100
+  (\ac{NODE} / \ac{sPHNN}) plus dataset offset \\
+\Ac{ODE} solver & Tsit5, adaptive steps, $\mathrm{rtol}=\mathrm{atol}=10^{-6}$,
+  maximum 65\,536 steps \\
+Arithmetic & \texttt{float64}, \ac{CPU} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Evaluation}} \\
+Evaluation initial state & Dataset mean $\boldsymbol{\mu}_0$ \\
+Short rollout & 300 equidistant times on $[0,10]$ \\
+Long rollout & 3000 equidistant times on $[0,15T]$,
+  $T=2\pi/\sqrt{2}$ \\
+Vector-field grid & 51 points in $q\in[-10,10]$ and
+  31 points in $p\in[-8,8]$ for the displayed structural comparisons \\
+\bottomrule
+\end{tabularx}

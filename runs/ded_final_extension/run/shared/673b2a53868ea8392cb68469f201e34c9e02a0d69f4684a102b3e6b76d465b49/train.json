@@ -1,0 +1,93 @@
+{
+  "acquisition_train_rmse_latent": 0.004086708600776667,
+  "artifacts": {
+    "checkpoint": {
+      "path": "model.eqx",
+      "sha256": "e8c48837f839bd0ddc6e026ac230a815af46785a5738bddcfac72c67a11cc70c"
+    },
+    "history": {
+      "path": "history.pkl",
+      "sha256": "557b07be5f67265bccf03d6aa84aca0f183b304a1d4c8dec730cdf5943c1b543"
+    },
+    "pod": {
+      "path": "pod.npz",
+      "sha256": "83935c881b29f19901b377437cf407ebbf888080d8d4001ee139181780e3be58"
+    }
+  },
+  "checkpoint_sha256": "e8c48837f839bd0ddc6e026ac230a815af46785a5738bddcfac72c67a11cc70c",
+  "dataset_size": 3,
+  "ensemble_size": 1,
+  "execution": {
+    "cpu_affinity": [
+      10,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      40,
+      41,
+      42,
+      43,
+      64,
+      65,
+      66,
+      67,
+      79
+    ],
+    "hostname": "mpsc0227",
+    "native_threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "pid": 746473,
+    "slurm_array_job_id": "55551416",
+    "slurm_array_task_id": "8",
+    "slurm_job_id": "55552170",
+    "timestamp_utc": "2026-10-22T21:58:39.926194+00:00",
+    "xla_flags": " --xla_cpu_parallel_codegen_split_count=1"
+  },
+  "history_sha256": "557b07be5f67265bccf03d6aa84aca0f183b304a1d4c8dec730cdf5943c1b543",
+  "initialization_seeds": [
+    82671945
+  ],
+  "manifest_sha256": "d409c518051877c4086390b6e187e122dec1587132a2f5fca21c411707ac67e5",
+  "model_class": "sPHNN",
+  "pod_sha256": "83935c881b29f19901b377437cf407ebbf888080d8d4001ee139181780e3be58",
+  "request": {
+    "dataset_size": 3,
+    "ensemble_size": 1,
+    "id": "673b2a53868ea8392cb68469f201e34c9e02a0d69f4684a102b3e6b76d465b49",
+    "model_class": "sPHNN",
+    "reference_shared": "e878dcb812073be0c022d097160ff70fcfcf58863eac692b8f1f610a7f896fd3",
+    "role": "acquisition",
+    "start": 18,
+    "train_ids": [
+      18,
+      0,
+      20
+    ],
+    "training_key": 10302000
+  },
+  "status": "passed",
+  "train_ids": [
+    18,
+    0,
+    20
+  ],
+  "train_seconds": 3333.839857751009,
+  "training_hyperparameters": {
+    "derivative_l2": 0.0,
+    "derivative_lr": 0.001,
+    "derivative_steps": 20000,
+    "finetune_l2": 1e-06,
+    "finetune_lr": 1e-05,
+    "finetune_objective": "MSE + 0.5 * finetune_l2 * ||theta_laplace||^2",
+    "finetune_steps": 10000,
+    "procedure": "derivative_then_trajectory_finetune"
+  },
+  "training_key": 10302000,
+  "wall_seconds": 3346.4928472280153
+}

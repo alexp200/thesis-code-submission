@@ -1,0 +1,79 @@
+{
+ "active_parameter_counts": {
+  "NODE": 2248,
+  "sPHNN": 6425,
+  "note": "source models constructed without training (2026-10-28 inspection)"
+ },
+ "solver": {
+  "method": "Tsit5",
+  "step_size_controller": "PID",
+  "atol": 1e-06,
+  "rtol": 1e-06,
+  "max_steps": 262144
+ },
+ "dynax_commit_recorded": "4cd21efe2675f9a875f6a628493ad7bcc7973f37",
+ "training": {
+  "NODE": {
+   "derivative_steps": 20000,
+   "derivative_lr": 0.001,
+   "finetune_steps": 15000,
+   "finetune_lr": 0.0001,
+   "finetune_l2": 1e-05
+  },
+  "sPHNN": {
+   "derivative_steps": 20000,
+   "derivative_lr": 0.001,
+   "finetune_steps": 10000,
+   "finetune_lr": 1e-05,
+   "finetune_l2": 1e-06
+  },
+  "derivative_batch": 128,
+  "note": "two training stages with optimiser keys / state reset; the shared POD is used by a reporting node and by the separate LA model of the same training set"
+ },
+ "inspected_sources_relative_to_submission_root": {
+  "final_experiments/ded_start_study/study_design.py": {
+   "exists": true,
+   "sha256": "61a6f300debb3153a661dfe074ccca82502be575259f00355fb6c19ba467f298"
+  },
+  "final_experiments/ded_final_extension/design.py": {
+   "exists": true,
+   "sha256": "8d77ae303f28bdbc6c5ca2f152f132f07cc949ddfac33f09726e5fad1cc95a12"
+  },
+  "final_experiments/ded_start_study/study_numerical.py": {
+   "exists": true,
+   "sha256": "850a4fc16116f9bba6c138f5211dc6c4186a520cae2f283a9e8a1669c48e81db"
+  },
+  "runs/ded_start_study/run/main/manifest.json": {
+   "exists": true,
+   "sha256": "c7574006d91b46aa87516d1683c1858caf79f9162584cc2e9af4afba639d4bfa"
+  },
+  "final_experiments/al_path_repeats/repeat_adapter.py": {
+   "exists": true,
+   "sha256": "af724b20b52ca7eab4dac07086c30dfb4cf03abcaeb4a3c1c92417f574a1c4ad"
+  },
+  "final_experiments/04_AL_DED/primary_investigation/CPU_LA_DE_run/run_al.py": {
+   "exists": true,
+   "sha256": "4da1ffeeb66b64a87c551668eb44488cb6f05b1da295b4161fa4aebd0a387833"
+  },
+  "final_experiments/04_AL_DED/primary_investigation/GPU_1LA_run_split1/_ded_al_core.py": {
+   "exists": true,
+   "sha256": "a42e460fc1dca643ce3814f30f3c93ca1740936a1cd51960c23b60e1119e1ede"
+  },
+  "final_experiments/04_AL_DED/primary_investigation/GPU_1LA_run_split1/ded_data.py": {
+   "exists": true,
+   "sha256": "a14b5c772ebfc012df08999e84dc6dd70c0708cae66066c45ef2045d9ab638cd"
+  },
+  "src/models.py": {
+   "exists": true,
+   "sha256": "6ea7c43959bc3466dfabb7cf4f19d92733d86568ea357270b4cc71221e25f02a"
+  },
+  "src/regularization.py": {
+   "exists": true,
+   "sha256": "88a72368c978a4153acf5172f72faecda43a0904eb53df3d6eef9f7e1a8dbe78"
+  },
+  "src/active_learning.py": {
+   "exists": true,
+   "sha256": "489533204e4b50d448697ad386e3fb4269c2eb64eb37e30698f025bc76d52179"
+  }
+ }
+}

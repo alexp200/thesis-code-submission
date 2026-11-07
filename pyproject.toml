@@ -1,0 +1,38 @@
+[project]
+name = "thesis-code-submission"
+version = "1.0.0"
+description = "Code and stored results of the Master's thesis 'Modelling of dynamic systems using stochastic physics-aware machine learning methods'"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "diffrax==0.7.2",
+    "dynax",
+    "equinox==0.13.8",
+    "h5netcdf==1.8.1",
+    "h5py==3.16.0",
+    "jax==0.10.1",
+    "jaxtyping==0.3.10",
+    "klax",
+    "matplotlib==3.10.9",
+    "numpy==2.4.6",
+    "optax==0.2.8",
+    "pandas==3.0.5",
+    "scipy==1.17.1",
+    "tqdm==4.70.1",          # progress bar of the training
+    "xarray==2026.7.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1"]
+
+[tool.uv]
+package = false          # scripts import the repository modules via PYTHONPATH / pytest "pythonpath"; nothing is installed into the environment
+
+[tool.uv.sources]
+# Pinned to the commits that produced the checkpoints (see docs/ENVIRONMENT.md).
+klax = { git = "https://github.com/drenderer/klax", rev = "5e8856e80a9776f0e293c14bcbf417696ce5ed82" }
+dynax = { git = "https://github.com/Drenderer/dynax.git", rev = "4cd21efe2675f9a875f6a628493ad7bcc7973f37" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

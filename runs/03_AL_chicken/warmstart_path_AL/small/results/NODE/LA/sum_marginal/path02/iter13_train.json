@@ -1,0 +1,73 @@
+{
+  "iteration": 13,
+  "dataset_size": 14,
+  "train_ids": [
+    874,
+    899,
+    795,
+    861,
+    888,
+    902,
+    868,
+    917,
+    851,
+    745,
+    906,
+    905,
+    853,
+    835
+  ],
+  "initialization_seeds": [
+    7213000,
+    7213001,
+    7213002
+  ],
+  "optimizer_key": 7213001,
+  "training_key": 7213000,
+  "ensemble_size": 3,
+  "recipe": {
+    "steps": 30000,
+    "lr": 0.0001,
+    "l2": 1e-06,
+    "procedure": "trajectory",
+    "augmented_dimensions": 0,
+    "vmap_ensemble": true,
+    "full_batch": true
+  },
+  "normalization": {
+    "ambient_K": 279.15,
+    "us_std": 56.24527056259094,
+    "ys_std": [
+      27.317091329343196,
+      26.86559742468749
+    ],
+    "fitted_on_ids": [
+      874,
+      899,
+      795,
+      861,
+      888,
+      902,
+      868,
+      917,
+      851,
+      745,
+      906,
+      905,
+      853,
+      835
+    ]
+  },
+  "active_parameter_squared_norm": [
+    2.5439638447601984,
+    2.4286061818154923,
+    2.0400978331742907
+  ],
+  "train_seconds": 5793.555188225,
+  "hostname": "mpsd0035",
+  "slurm_job_id": "55402239",
+  "artifact_sha256": {
+    "iter13.eqx": "d2b642d2cf42b3b5da7c4880ffb6de8bce842c083a000313f9ab4f7bc7efe2d0",
+    "iter13_history.pkl": "927cddadd90acffd5e066e84a6e837f735744829afcc6e4419be91ca73bb384e"
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "artifacts": {
+    "calibration": {
+      "path": "calibration.npz",
+      "sha256": "a22931a1f82672fa8ecf3e199dd61500ea86070141cf290adeeb9ffa26f434d4"
+    }
+  },
+  "execution": {
+    "cpu_affinity": [
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95
+    ],
+    "hostname": "mpsc0075",
+    "native_threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "pid": 957964,
+    "slurm_array_job_id": "55529156",
+    "slurm_array_task_id": "8",
+    "slurm_job_id": "55529455",
+    "timestamp_utc": "2026-10-22T08:17:41.294209+00:00",
+    "xla_flags": " --xla_cpu_parallel_codegen_split_count=1"
+  },
+  "manifest_sha256": "d409c518051877c4086390b6e187e122dec1587132a2f5fca21c411707ac67e5",
+  "model_commit": {
+    "path": "../../shared/9b707cc3c595eca77c9123f0eadfd33694bfae7cf035eba64adcc20df8896926/train.json",
+    "sha256": "aa75224923e4c95520b980b9e73d9176adb659d6a5c7bb4f629dbbc0a53600de"
+  },
+  "picked_id": 24,
+  "pool_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    21,
+    22,
+    23,
+    24
+  ],
+  "ranking": [
+    {
+      "batch_id": 24,
+      "score": -100370.0827452116
+    },
+    {
+      "batch_id": 23,
+      "score": -101461.98694332817
+    },
+    {
+      "batch_id": 22,
+      "score": -104769.98074718178
+    },
+    {
+      "batch_id": 19,
+      "score": -106787.45102731834
+    },
+    {
+      "batch_id": 18,
+      "score": -108601.74531855604
+    },
+    {
+      "batch_id": 0,
+      "score": -111377.11220325546
+    },
+    {
+      "batch_id": 17,
+      "score": -113262.48446222635
+    },
+    {
+      "batch_id": 21,
+      "score": -114014.14906260419
+    },
+    {
+      "batch_id": 14,
+      "score": -114339.52488202635
+    },
+    {
+      "batch_id": 5,
+      "score": -114635.49641592968
+    },
+    {
+      "batch_id": 13,
+      "score": -117140.23586394968
+    },
+    {
+      "batch_id": 10,
+      "score": -121601.34334271771
+    },
+    {
+      "batch_id": 9,
+      "score": -122741.00107411089
+    },
+    {
+      "batch_id": 12,
+      "score": -123971.82242911495
+    },
+    {
+      "batch_id": 16,
+      "score": -126468.12980396829
+    },
+    {
+      "batch_id": 8,
+      "score": -126906.01232148062
+    },
+    {
+      "batch_id": 4,
+      "score": -130509.94808002998
+    },
+    {
+      "batch_id": 15,
+      "score": -134829.50702924983
+    },
+    {
+      "batch_id": 3,
+      "score": -135309.9358063945
+    },
+    {
+      "batch_id": 7,
+      "score": -136916.19205226263
+    },
+    {
+      "batch_id": 11,
+      "score": -144357.51975340952
+    },
+    {
+      "batch_id": 2,
+      "score": -145741.12811526543
+    },
+    {
+      "batch_id": 1,
+      "score": -146934.18088417282
+    }
+  ],
+  "request": {
+    "id": "e07306c24795f4cdb81cdf0acbf9185be01c3de0440d6f58f598dc0fe19bf79c",
+    "method": "LA",
+    "model_class": "NODE",
+    "model_id": "9b707cc3c595eca77c9123f0eadfd33694bfae7cf035eba64adcc20df8896926",
+    "train_ids": [
+      6,
+      20
+    ]
+  },
+  "sigma_noise": 0.0,
+  "status": "passed",
+  "timings": {
+    "laplace_fit_seconds": 56.948103928007185
+  },
+  "train_ids": [
+    6,
+    20
+  ],
+  "wall_seconds": 139.6315101829823
+}

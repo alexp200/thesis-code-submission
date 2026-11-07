@@ -1,0 +1,257 @@
+{
+  "arch": "NODE",
+  "start": 902,
+  "candidate": 899,
+  "seed_set": "A",
+  "train_ids": [
+    902,
+    899
+  ],
+  "training_key": 7801000,
+  "optimizer_key": 7801001,
+  "steps": 30000,
+  "smoke": false,
+  "member_rmse_K": [
+    4.731035225882957,
+    4.615330043208243,
+    5.9403203430115905
+  ],
+  "median_K": 4.731035225882957,
+  "per_trajectory_rmse_K": [
+    [
+      3.978286346348321,
+      7.406667055343127,
+      3.679651116983211,
+      2.5242938373935835,
+      3.84013329995654,
+      6.031273557795855,
+      2.5880117775808347,
+      2.4470037054938,
+      7.098605228912339,
+      5.8439314563205675,
+      4.813241865337062,
+      6.654270994197581,
+      3.567859071229726,
+      3.008355634842756,
+      2.750700718235547
+    ],
+    [
+      4.133167274363154,
+      7.520896212159555,
+      3.1626911978054406,
+      2.153681348382062,
+      3.5583921507966454,
+      5.895315511337172,
+      2.351438603949733,
+      1.9224207673833562,
+      7.09845394525886,
+      6.359463249485269,
+      4.872339745353304,
+      6.44785862788862,
+      2.9374105908113854,
+      2.325650090149726,
+      2.0992545758720507
+    ],
+    [
+      4.424870116234923,
+      9.562378756457031,
+      2.5991228341733206,
+      1.6496306137624566,
+      2.484642265641443,
+      10.245895248156781,
+      2.868044595967308,
+      3.3929476171716777,
+      8.496772918404945,
+      9.676359574511839,
+      4.562174527206128,
+      8.43810161448042,
+      2.272139023498689,
+      2.807330484947126,
+      2.65337763930318
+    ]
+  ],
+  "ensemble_mean_rmse_K": 4.8657065906847174,
+  "train_rmse_latent": [
+    0.05378409978291976,
+    0.03523410722724537,
+    0.08029095928920152
+  ],
+  "dropped_indices": [],
+  "filter_cutoff": 0.2689204989145988,
+  "effective_members": 3,
+  "train_seconds": 442.3256267469842,
+  "total_seconds": 458.4775532890344,
+  "host": "mpsd0007",
+  "warm_block": 8,
+  "cluster_plan_sha256": "09c72c492030f98df1ad3f1fe0c68592e881012c80c64c52ccf6265581129c92",
+  "task_spec": {
+    "task": 272,
+    "arch": "NODE",
+    "start": 902,
+    "candidate": 899,
+    "seed_set": "A",
+    "training_key": 7801000
+  },
+  "initialization_seeds": [
+    7801000,
+    7801001,
+    7801002
+  ],
+  "evaluation_ids": [
+    313,
+    320,
+    344,
+    378,
+    383,
+    407,
+    412,
+    415,
+    461,
+    462,
+    466,
+    467,
+    474,
+    508,
+    528
+  ],
+  "recipe": {
+    "steps": 30000,
+    "lr": 0.0001,
+    "l2": 1e-06
+  },
+  "dataset_sha256": "2ff82f83226396abe62c8b9662ad828a9c8db3abcbf06f8b005bc6e71d8590c8",
+  "environment": {
+    "timestamp_utc": "2026-10-13T14:11:48.716204+00:00",
+    "hostname": "mpsd0007",
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8470Q",
+    "platform": "Linux-5.14.0-570.144.1.el9_6.x86_64-x86_64-with-glibc2.34",
+    "variables": {
+      "JAX_PLATFORMS": "cpu",
+      "JAX_ENABLE_X64": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "XLA_FLAGS": "--xla_cpu_parallel_codegen_split_count=1",
+      "SLURM_JOB_ID": "55425068",
+      "SLURM_ARRAY_JOB_ID": "55420831",
+      "SLURM_ARRAY_TASK_ID": "272",
+      "SLURM_CPUS_PER_TASK": "1",
+      "SLURM_JOB_PARTITION": "deflt"
+    },
+    "affinity": [
+      71
+    ],
+    "python": "3.12.13",
+    "versions": {
+      "jax": "0.10.1",
+      "jaxlib": "0.10.1",
+      "equinox": "0.13.8",
+      "diffrax": "0.7.2",
+      "klax": "0.2.0",
+      "dynax": "0.2.0",
+      "optax": "0.2.8",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "xarray": "2026.7.0",
+      "h5netcdf": "1.8.1",
+      "h5py": "3.16.0"
+    },
+    "direct_urls": {
+      "klax": {
+        "url": "https://github.com/drenderer/klax",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "5e8856e80a9776f0e293c14bcbf417696ce5ed82",
+          "requested_revision": "5e8856e80a9776f0e293c14bcbf417696ce5ed82"
+        }
+      },
+      "dynax": {
+        "url": "https://github.com/Drenderer/dynax.git",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "4cd21efe2675f9a875f6a628493ad7bcc7973f37",
+          "requested_revision": "4cd21efe2675f9a875f6a628493ad7bcc7973f37"
+        }
+      }
+    }
+  },
+  "cluster_wall_seconds": 464.8349160760408,
+  "max_rss_bytes": 1784258560,
+  "cpu_seconds": 458.89351200000004,
+  "reproduction": [
+    {
+      "file": "/work/scratch/user/99_Code_cpu_validated/final_experiments/03_AL_chicken/warmstart_path_AL/small/results/NODE/DE/sum_marginal/path08/iter01.json",
+      "sha256": "80defca44d9014273ce3c7833b8a9d9cb38737628a0814566a68dea5a077433e",
+      "stored_member_rmse_K": [
+        4.731035225882957,
+        4.615330043208243,
+        5.9403203430115905
+      ],
+      "difference_K": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "/work/scratch/user/99_Code_cpu_validated/final_experiments/03_AL_chicken/warmstart_path_AL/small/results/NODE/DE/sum_variance/path08/iter01.json",
+      "sha256": "67565fe15fe1ab0bcfc7faf1a177818336bd9edfe54e41bcc4661be26b90de42",
+      "stored_member_rmse_K": [
+        4.731035225882957,
+        4.615330043208243,
+        5.9403203430115905
+      ],
+      "difference_K": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "/work/scratch/user/99_Code_cpu_validated/final_experiments/03_AL_chicken/warmstart_path_AL/small/results/NODE/LA/sum_marginal/path08/iter01.json",
+      "sha256": "82b6621232bd60226e1762deb5db9decba20f1487641acff7e2a82500eb79763",
+      "stored_member_rmse_K": [
+        4.731035225882957,
+        4.615330043208243,
+        5.9403203430115905
+      ],
+      "difference_K": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "/work/scratch/user/99_Code_cpu_validated/final_experiments/03_AL_chicken/warmstart_path_AL/small/results/NODE/LA/sum_variance/path08/iter01.json",
+      "sha256": "e430d1786aca8c68edc1f46a9edd3bac01dce150651fa3c5f4f742e6bf110ac2",
+      "stored_member_rmse_K": [
+        4.731035225882957,
+        4.615330043208243,
+        5.9403203430115905
+      ],
+      "difference_K": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "file": "/work/scratch/user/99_Code_cpu_validated/final_experiments/03_AL_chicken/warmstart_path_AL/small/results/NODE/MoLA/sum_marginal/path08/iter01.json",
+      "sha256": "9a1b7ea97847c4bb9d9e5f3ebfbbf78422b087e6bf65200cfff68eeb816bcb41",
+      "stored_member_rmse_K": [
+        4.731035225882957,
+        4.615330043208243,
+        5.9403203430115905
+      ],
+      "difference_K": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "artifact_sha256": {
+    "cand899_setA.eqx": "c778a005d9bd4754fb3f160756eb524095c644f1d145ccf1dbcd9c0309e9d493",
+    "cand899_setA_history.pkl": "ccba2281eef5a3b68d5bf081affc9720030cb9894e073351184c0ac58eb4c3a7"
+  }
+}

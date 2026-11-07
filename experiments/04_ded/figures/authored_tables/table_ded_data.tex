@@ -1,0 +1,20 @@
+\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}X@{}}
+  \toprule
+  Setting & Value \\
+  \midrule
+  \multicolumn{2}{@{}l}{\emph{Data and representation}} \\
+  Catalogue & $n_{\mathrm{cat}}=25$ simulations, \acp{ID} $0$--$24$ \\
+  Source speed & $v\in\{10,12.5,15,17.5,20\}\,\mathrm{mm\,s^{-1}}$ \\
+  Source power & $Q\in\{300,350,400,450,500\}\,\mathrm{W}$ \\
+  Sampling & $n_t=401$ times on $[0,20]\,\mathrm{s}$, $1836$ spatial nodes \\
+  Latent dimensions & $d_x=d_u=40$, separate temperature and heat-source \ac{POD} bases \\
+  Equilibrium & Uniform ambient field at $293.15\,\mathrm{K}$, shifted to the latent origin \\
+  \midrule
+  \multicolumn{2}{@{}l}{\emph{Selection and evaluation}} \\
+  Starts & $n_{\mathrm{start}}=10$, \acp{ID} $2,4,6,10,12,14,18,20,22,24$ \\
+  Candidate pool & All simulations outside the current training set, $n_{\mathrm{pool}}=25-n_D$ \\
+  Training budget & $n_D=1,\ldots,5$ \\
+  Random reference & $n_{\mathrm{rand}}=6$ paths per start \\
+  Evaluation & All $25$ simulations, including training trajectories, no held-out subset \\
+  \bottomrule
+\end{tabularx}

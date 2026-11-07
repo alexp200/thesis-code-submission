@@ -1,0 +1,97 @@
+{
+  "acquisition_train_rmse_latent": 0.041153687307058005,
+  "artifacts": {
+    "checkpoint": {
+      "path": "../../../../../shared/ff2145a62269cf161464eb66236059bd4982003bb6b8271db6f1e36a0ced41ca/model.eqx",
+      "sha256": "bca176db0028edb144566a15f4f3c45d5222f1e45afd97530ac98cd88920baab"
+    },
+    "history": {
+      "path": "../../../../../shared/ff2145a62269cf161464eb66236059bd4982003bb6b8271db6f1e36a0ced41ca/history.pkl",
+      "sha256": "bd39495b45dd27a6741fca46314e61fd72c23052cd073ea748b6bda805bfcbf5"
+    },
+    "pod": {
+      "path": "../../../../../shared/ff2145a62269cf161464eb66236059bd4982003bb6b8271db6f1e36a0ced41ca/pod.npz",
+      "sha256": "9d695d80979563ae951426c44c1fff23af67fca9240a0f5cfb19236945581d29"
+    }
+  },
+  "checkpoint_sha256": "bca176db0028edb144566a15f4f3c45d5222f1e45afd97530ac98cd88920baab",
+  "dataset_size": 3,
+  "ensemble_size": 1,
+  "execution": {
+    "cpu_affinity": [
+      1,
+      58,
+      61,
+      62,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79
+    ],
+    "hostname": "mpsc0075",
+    "native_threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "pid": 1092317,
+    "slurm_array_job_id": "55551416",
+    "slurm_array_task_id": "0",
+    "slurm_job_id": "55551419",
+    "timestamp_utc": "2026-10-22T21:04:05.327244+00:00",
+    "xla_flags": " --xla_cpu_parallel_codegen_split_count=1"
+  },
+  "history_sha256": "bd39495b45dd27a6741fca46314e61fd72c23052cd073ea748b6bda805bfcbf5",
+  "initialization_seeds": [
+    1770604306
+  ],
+  "manifest_sha256": "d409c518051877c4086390b6e187e122dec1587132a2f5fca21c411707ac67e5",
+  "model_class": "NODE",
+  "pod_sha256": "9d695d80979563ae951426c44c1fff23af67fca9240a0f5cfb19236945581d29",
+  "request": {
+    "dataset_size": 3,
+    "ensemble_size": 1,
+    "id": "ff2145a62269cf161464eb66236059bd4982003bb6b8271db6f1e36a0ced41ca",
+    "model_class": "NODE",
+    "reference_shared": "4dce75a8a78e3e8b6ca0d1377bb84df3ae5d14281d4f56e1747520bcc82ed4ed",
+    "role": "acquisition",
+    "start": 20,
+    "train_ids": [
+      20,
+      0,
+      4
+    ],
+    "training_key": 10002000
+  },
+  "shared_training": {
+    "path": "../../../../../shared/ff2145a62269cf161464eb66236059bd4982003bb6b8271db6f1e36a0ced41ca/train.json",
+    "sha256": "e6c74aa79305386a07749a383c9492f8323a7e5ebe84d40b5c751899d6251067"
+  },
+  "status": "passed",
+  "train_ids": [
+    20,
+    0,
+    4
+  ],
+  "train_seconds": 1725.3659506010008,
+  "training_hyperparameters": {
+    "derivative_l2": 0.0,
+    "derivative_lr": 0.001,
+    "derivative_steps": 20000,
+    "finetune_l2": 1e-05,
+    "finetune_lr": 0.0001,
+    "finetune_objective": "MSE + 0.5 * finetune_l2 * ||theta_laplace||^2",
+    "finetune_steps": 15000,
+    "procedure": "derivative_then_trajectory_finetune"
+  },
+  "training_key": 10002000,
+  "wall_seconds": 1735.5506209530286
+}

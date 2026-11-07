@@ -1,0 +1,97 @@
+{
+  "acquisition_train_rmse_latent": 0.04014142247067734,
+  "artifacts": {
+    "checkpoint": {
+      "path": "../../../../../shared/5716947e8f021a84b0d36456f3a7941dd66185d7d5858d630722ae9abd659687/model.eqx",
+      "sha256": "3e7683d82b6354fff24ae76e25a7de5ff7fdf97316bd2e5e3fce21f10415c070"
+    },
+    "history": {
+      "path": "../../../../../shared/5716947e8f021a84b0d36456f3a7941dd66185d7d5858d630722ae9abd659687/history.pkl",
+      "sha256": "336597ed1349cb13f0674563e8fcd783f7721c7f054e9f9feb75fd46b6931a00"
+    },
+    "pod": {
+      "path": "../../../../../shared/5716947e8f021a84b0d36456f3a7941dd66185d7d5858d630722ae9abd659687/pod.npz",
+      "sha256": "83935c881b29f19901b377437cf407ebbf888080d8d4001ee139181780e3be58"
+    }
+  },
+  "checkpoint_sha256": "3e7683d82b6354fff24ae76e25a7de5ff7fdf97316bd2e5e3fce21f10415c070",
+  "dataset_size": 3,
+  "ensemble_size": 1,
+  "execution": {
+    "cpu_affinity": [
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95
+    ],
+    "hostname": "mpsc0075",
+    "native_threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "pid": 1094874,
+    "slurm_array_job_id": "55551416",
+    "slurm_array_task_id": "3",
+    "slurm_job_id": "55551658",
+    "timestamp_utc": "2026-10-22T21:07:12.864984+00:00",
+    "xla_flags": " --xla_cpu_parallel_codegen_split_count=1"
+  },
+  "history_sha256": "336597ed1349cb13f0674563e8fcd783f7721c7f054e9f9feb75fd46b6931a00",
+  "initialization_seeds": [
+    82671945
+  ],
+  "manifest_sha256": "d409c518051877c4086390b6e187e122dec1587132a2f5fca21c411707ac67e5",
+  "model_class": "NODE",
+  "pod_sha256": "83935c881b29f19901b377437cf407ebbf888080d8d4001ee139181780e3be58",
+  "request": {
+    "dataset_size": 3,
+    "ensemble_size": 1,
+    "id": "5716947e8f021a84b0d36456f3a7941dd66185d7d5858d630722ae9abd659687",
+    "model_class": "NODE",
+    "reference_shared": "dbb0b48068b21f06cb59887413edec62f5e5690d24eab87bfdbc6c48f4ea3db6",
+    "role": "acquisition",
+    "start": 18,
+    "train_ids": [
+      18,
+      0,
+      20
+    ],
+    "training_key": 10302000
+  },
+  "shared_training": {
+    "path": "../../../../../shared/5716947e8f021a84b0d36456f3a7941dd66185d7d5858d630722ae9abd659687/train.json",
+    "sha256": "4b581e8a85c53974b1c968c8089c038abed33a302074cd21ed7e47bdf793c51e"
+  },
+  "status": "passed",
+  "train_ids": [
+    18,
+    0,
+    20
+  ],
+  "train_seconds": 1403.3000391800306,
+  "training_hyperparameters": {
+    "derivative_l2": 0.0,
+    "derivative_lr": 0.001,
+    "derivative_steps": 20000,
+    "finetune_l2": 1e-05,
+    "finetune_lr": 0.0001,
+    "finetune_objective": "MSE + 0.5 * finetune_l2 * ||theta_laplace||^2",
+    "finetune_steps": 15000,
+    "procedure": "derivative_then_trajectory_finetune"
+  },
+  "training_key": 10302000,
+  "wall_seconds": 1413.0159580830368
+}

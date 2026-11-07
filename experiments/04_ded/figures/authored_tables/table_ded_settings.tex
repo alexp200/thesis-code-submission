@@ -1,0 +1,33 @@
+\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}X@{}}
+  \toprule
+  Setting & Value \\
+  \midrule
+  \multicolumn{2}{@{}l}{\emph{Models and integration}} \\
+  \Ac{NODE} & Two width-16 softplus hidden layers, $d_\theta=2248$ \\
+  \Ac{sPHNN} & Two width-16 softplus \ac{FICNN} hidden layers,
+    $d_\theta=6425$, fixed zero equilibrium. Constant learned
+    skew-symmetric $\boldsymbol J$, positive-definite $\boldsymbol R$,
+    and input matrix $\boldsymbol G$ \\
+  Weight initialisation & Fan-in variance scaling with truncated-normal draws,
+    scale $10^{-2}$ (\ac{NODE}) or $10^{-4}$ (\ac{sPHNN}) \\
+  Reporting members & $n_{\mathrm{ens}}=3$ per training set \\
+  Solver & Adaptive Tsit5 with \acs{PID} controller,
+    absolute and relative tolerances $10^{-6}$,
+    maximum $262144$ steps \\
+  Numerics & CPU, \texttt{float64} \\
+  \midrule
+  \multicolumn{2}{@{}l}{\emph{Inference and acquisition}} \\
+  Acquisition models & \ac{LA}: one separately trained model.
+    \ac{DE}: population moments of retained reporting members.
+    \ac{MoLA}: equally weighted retained components \\
+  Laplace curvature & Full-network \ac{GGN} of the final latent trajectory likelihood
+    in raw parameter coordinates \\
+  Post-hoc calibration & Isotropic Gaussian prior, joint \ac{MLL}
+    calibration of prior precision $\alpha$ and noise standard deviation $\sigma_{\mathrm n}$,
+    $200$ Adam steps at rate $0.1$ per component, trained weights fixed \\
+  Marginal pushforward & Full-spectrum eigen-direction \acp{JVP} \\
+  Scoring coordinates & $n_t d_x=16040$ marginal epistemic variances in latent
+    coordinates, no observation-noise contribution \\
+  Acquisition criterion & \ac{MGE}, variance floor $v_{\min}=10^{-12}$ \\
+  \bottomrule
+\end{tabularx}

@@ -1,0 +1,50 @@
+{
+  "plan_sha256": "7342a8bcf4e5df9bca82b163e4a841d57672f009e3967150423ae57cadbbb4f4",
+  "task": {
+    "task": 5,
+    "model": "NODE",
+    "method": "random",
+    "criterion": "random",
+    "path": 5
+  },
+  "environment": {
+    "python": "3.12.13",
+    "native_threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "xla_flags": " --xla_cpu_parallel_codegen_split_count=1",
+    "backend": "cpu",
+    "x64": true,
+    "versions": {
+      "jax": "0.10.1",
+      "jaxlib": "0.10.1",
+      "equinox": "0.13.8",
+      "klax": "0.2.0",
+      "dynax": "0.2.0",
+      "diffrax": "0.7.2",
+      "optax": "0.2.8",
+      "numpy": "2.4.6"
+    },
+    "vcs_packages": {
+      "dynax": {
+        "url": "https://github.com/Drenderer/dynax.git",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "4cd21efe2675f9a875f6a628493ad7bcc7973f37",
+          "requested_revision": "4cd21efe2675f9a875f6a628493ad7bcc7973f37"
+        }
+      },
+      "klax": {
+        "url": "https://github.com/drenderer/klax",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "5e8856e80a9776f0e293c14bcbf417696ce5ed82",
+          "requested_revision": "5e8856e80a9776f0e293c14bcbf417696ce5ed82"
+        }
+      }
+    }
+  },
+  "artifact_sha256": {}
+}

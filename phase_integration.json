@@ -1,0 +1,44 @@
+{
+  "functions": {
+    "final_experiments/03_AL_chicken/primary_investigations/MoLA_run_L2/al_loop_node.py": [
+      "train_ensemble_from_scratch",
+      "filter_converged_members",
+      "build_mola",
+      "test_rmse_members",
+      "score_pool_candidates"
+    ],
+    "final_experiments/03_AL_chicken/primary_investigations/MoLA_run_L2/al_loop_sphnn.py": [
+      "train_ensemble_from_scratch",
+      "filter_converged_members",
+      "build_mola",
+      "test_rmse_members",
+      "score_pool_candidates"
+    ],
+    "final_experiments/03_AL_chicken/primary_investigations/DE_run_L2/run_de_al_loop.py": [
+      "score_pool_de"
+    ],
+    "final_experiments/03_AL_chicken/primary_investigations/LA_run_L2/run_la_al_loop.py": [
+      "laplace_cov_var_fns",
+      "score_pool_la"
+    ],
+    "final_experiments/04_AL_DED/primary_investigation/GPU_1LA_run_split1/_ded_al_core.py": [
+      "prepare_iteration_data",
+      "train_hybrid_stages",
+      "filter_converged_members",
+      "full_dataset_rmse_K_members",
+      "acquisition_train_rmse",
+      "fit_single_seed_laplace",
+      "score_pool_sum_marginal",
+      "score_pool_sum_variance"
+    ]
+  },
+  "launchers": [
+    "final_experiments/03_AL_chicken/cluster/mola_cpu.sbatch",
+    "final_experiments/03_AL_chicken/cluster/de_cpu.sbatch",
+    "final_experiments/03_AL_chicken/cluster/la_cpu.sbatch",
+    "final_experiments/04_AL_DED/cluster/al_cpu.sbatch"
+  ],
+  "cache_release": "Equinox, then JAX, then GC after synchronized phase results",
+  "native_threads": 1,
+  "cpu_codegen_split_count": 1
+}

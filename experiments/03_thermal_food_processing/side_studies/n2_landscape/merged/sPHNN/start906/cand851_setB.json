@@ -1,0 +1,186 @@
+{
+  "arch": "sPHNN",
+  "start": 906,
+  "candidate": 851,
+  "seed_set": "B",
+  "train_ids": [
+    906,
+    851
+  ],
+  "training_key": 7351000,
+  "optimizer_key": 7351001,
+  "steps": 20000,
+  "smoke": false,
+  "member_rmse_K": [
+    1.7341797439739688,
+    1.7135089078035552,
+    1.743763888812857
+  ],
+  "median_K": 1.7341797439739688,
+  "per_trajectory_rmse_K": [
+    [
+      1.8697464775328108,
+      2.8948332612330154,
+      1.1465053863513475,
+      1.0755273206680336,
+      0.7710173927812399,
+      2.715931469321179,
+      1.3640403495342204,
+      2.1469663445833005,
+      2.082244743010904,
+      1.8650067943886204,
+      2.351733539428779,
+      1.3661523303172145,
+      0.8452011803794746,
+      0.42829487132120575,
+      0.46239122616819595
+    ],
+    [
+      1.8742268686650416,
+      2.8091769530860544,
+      1.0774211473048916,
+      1.0419789522357517,
+      0.6681672924590073,
+      2.618935463079956,
+      1.399456406002534,
+      2.3418158408875565,
+      2.053692034902353,
+      1.8381901876298163,
+      2.25937208242517,
+      1.3662496132742945,
+      0.7830734421911777,
+      0.4317303191726844,
+      0.5248753087909754
+    ],
+    [
+      1.9331374103632692,
+      2.94700652893161,
+      1.0920306634442727,
+      1.0460378921041844,
+      0.7136012620356237,
+      2.604745054035352,
+      1.4041871435206885,
+      2.2903042162968545,
+      2.1447601391756037,
+      1.800459928070793,
+      2.3559600981054025,
+      1.38602799133642,
+      0.7882719895707038,
+      0.4293910750919832,
+      0.5214518431641584
+    ]
+  ],
+  "ensemble_mean_rmse_K": 1.7281939124908587,
+  "train_rmse_latent": [
+    0.02168148187616849,
+    0.022092808740267672,
+    0.022057483404559357
+  ],
+  "dropped_indices": [],
+  "filter_cutoff": 0.11028741702279679,
+  "effective_members": 3,
+  "train_seconds": 643.5864932909608,
+  "total_seconds": 665.4033678249689,
+  "host": "mpsd0011",
+  "warm_block": 3,
+  "cluster_plan_sha256": "09c72c492030f98df1ad3f1fe0c68592e881012c80c64c52ccf6265581129c92",
+  "task_spec": {
+    "task": 399,
+    "arch": "sPHNN",
+    "start": 906,
+    "candidate": 851,
+    "seed_set": "B",
+    "training_key": 7351000
+  },
+  "initialization_seeds": [
+    7351000,
+    7351001,
+    7351002
+  ],
+  "evaluation_ids": [
+    313,
+    320,
+    344,
+    378,
+    383,
+    407,
+    412,
+    415,
+    461,
+    462,
+    466,
+    467,
+    474,
+    508,
+    528
+  ],
+  "recipe": {
+    "steps": 20000,
+    "lr": 0.0001,
+    "l2": 1e-06
+  },
+  "dataset_sha256": "2ff82f83226396abe62c8b9662ad828a9c8db3abcbf06f8b005bc6e71d8590c8",
+  "environment": {
+    "timestamp_utc": "2026-10-13T14:49:42.595168+00:00",
+    "hostname": "mpsd0011",
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8470Q",
+    "platform": "Linux-5.14.0-570.144.1.el9_6.x86_64-x86_64-with-glibc2.34",
+    "variables": {
+      "JAX_PLATFORMS": "cpu",
+      "JAX_ENABLE_X64": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "XLA_FLAGS": "--xla_cpu_parallel_codegen_split_count=1",
+      "SLURM_JOB_ID": "55425490",
+      "SLURM_ARRAY_JOB_ID": "55420832",
+      "SLURM_ARRAY_TASK_ID": "399",
+      "SLURM_CPUS_PER_TASK": "1",
+      "SLURM_JOB_PARTITION": "deflt"
+    },
+    "affinity": [
+      36
+    ],
+    "python": "3.12.13",
+    "versions": {
+      "jax": "0.10.1",
+      "jaxlib": "0.10.1",
+      "equinox": "0.13.8",
+      "diffrax": "0.7.2",
+      "klax": "0.2.0",
+      "dynax": "0.2.0",
+      "optax": "0.2.8",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "xarray": "2026.7.0",
+      "h5netcdf": "1.8.1",
+      "h5py": "3.16.0"
+    },
+    "direct_urls": {
+      "klax": {
+        "url": "https://github.com/drenderer/klax",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "5e8856e80a9776f0e293c14bcbf417696ce5ed82",
+          "requested_revision": "5e8856e80a9776f0e293c14bcbf417696ce5ed82"
+        }
+      },
+      "dynax": {
+        "url": "https://github.com/Drenderer/dynax.git",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "4cd21efe2675f9a875f6a628493ad7bcc7973f37",
+          "requested_revision": "4cd21efe2675f9a875f6a628493ad7bcc7973f37"
+        }
+      }
+    }
+  },
+  "cluster_wall_seconds": 673.8433835679898,
+  "max_rss_bytes": 1784246272,
+  "cpu_seconds": 666.735773,
+  "reproduction": [],
+  "artifact_sha256": {
+    "cand851_setB.eqx": "e58d282fa2f71803a2883b2096348f1b50775aa537c9699d1fc058d0f476d0b9",
+    "cand851_setB_history.pkl": "3674f17d27252833db4fc1190499d9537e9aaf6ed09c05243f5c89e4811fa8bf"
+  }
+}

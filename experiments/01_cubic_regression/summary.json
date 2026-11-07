@@ -1,0 +1,194 @@
+{
+  "config": {
+    "n_train": 11,
+    "sigma_generation": 1.5,
+    "fixed_prior_precision": 1.5,
+    "fixed_sigma": 1.5,
+    "seed": 2026,
+    "x_train_min": -1.0,
+    "x_train_max": 1.0,
+    "x_eval_min": -1.6,
+    "x_eval_max": 1.6,
+    "n_eval": 241,
+    "mll_atol": 1e-10,
+    "posterior_rtol": 1e-10,
+    "repo_adam_steps": 200,
+    "repo_adam_lr": 0.1
+  },
+  "theta_true": [
+    1.0,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "fixed_hyperparameter_laplace": {
+    "status": "PASS",
+    "alpha": 1.5,
+    "sigma": 1.5,
+    "theta_map": [
+      1.62218369424159,
+      1.2577748091475973,
+      0.9302077974696379,
+      1.1839144064825728
+    ],
+    "ggn_relative_error": 0.0,
+    "posterior_covariance_relative_error": 2.548838360932931e-16,
+    "predictive_variance_relative_error": 2.952249738318372e-16,
+    "predictive_dense_covariance_relative_error": 2.974103505867738e-16
+  },
+  "mll_objective_fixed_pairs": {
+    "status": "PASS",
+    "comparison": [
+      {
+        "alpha": 1.5,
+        "sigma": 1.5,
+        "exact_log_mll": -24.685983705913998,
+        "repo_log_mll_at_pairwise_map": -24.685983705913994,
+        "absolute_difference": 3.552713678800501e-15,
+        "relative_difference": 1.4391622878489466e-16
+      },
+      {
+        "alpha": 0.2,
+        "sigma": 0.8,
+        "exact_log_mll": -20.781779359366197,
+        "repo_log_mll_at_pairwise_map": -20.78177935936619,
+        "absolute_difference": 7.105427357601002e-15,
+        "relative_difference": 3.41906592055056e-16
+      },
+      {
+        "alpha": 0.5,
+        "sigma": 1.5,
+        "exact_log_mll": -21.876329048537762,
+        "repo_log_mll_at_pairwise_map": -21.876329048537762,
+        "absolute_difference": 0.0,
+        "relative_difference": 0.0
+      },
+      {
+        "alpha": 5.0,
+        "sigma": 1.5,
+        "exact_log_mll": -30.876754427296593,
+        "repo_log_mll_at_pairwise_map": -30.87675442729659,
+        "absolute_difference": 3.552713678800501e-15,
+        "relative_difference": 1.150611113342834e-16
+      },
+      {
+        "alpha": 1.5,
+        "sigma": 3.0,
+        "exact_log_mll": -26.97593734488509,
+        "repo_log_mll_at_pairwise_map": -26.975937344885086,
+        "absolute_difference": 3.552713678800501e-15,
+        "relative_difference": 1.3169935981757948e-16
+      },
+      {
+        "alpha": 10.0,
+        "sigma": 5.0,
+        "exact_log_mll": -30.26857391566874,
+        "repo_log_mll_at_pairwise_map": -30.26857391566874,
+        "absolute_difference": 0.0,
+        "relative_difference": 0.0
+      }
+    ],
+    "max_absolute_difference": 7.105427357601002e-15
+  },
+  "exact_blr_mll_optimum": {
+    "log_alpha": -1.425960804818616,
+    "log_sigma": -0.018382874977404352,
+    "alpha": 0.24027749249462926,
+    "sigma": 0.9817850594551304,
+    "negative_log_mll": 20.403382324051545,
+    "log_mll": -20.403382324051545,
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+  },
+  "repo_fixed_map_mll_optimum": {
+    "log_alpha": -0.8924809019057381,
+    "log_sigma": 0.3498420465312061,
+    "alpha": 0.4096382188355559,
+    "sigma": 1.4188434196529418,
+    "negative_log_mll": 22.55099270679336,
+    "log_mll": -22.55099270679336,
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+  },
+  "repo_adam_calibration": {
+    "status_vs_repo_fixed_map_objective": "PASS",
+    "status_vs_exact_blr_empirical_bayes": "FAIL_EXPECTED_FIXED_MAP_OBJECTIVE_DIFFERS",
+    "best_adam": {
+      "init_alpha": 1.5,
+      "init_sigma": 1.5,
+      "alpha": 0.4096305362798142,
+      "sigma": 1.4188428420575505,
+      "repo_fixed_map_log_mll": -22.55099270708147,
+      "exact_blr_log_mll_at_repo_solution": -21.43827806883143,
+      "steps": 200,
+      "lr": 0.1
+    },
+    "all_runs": [
+      {
+        "init_alpha": 1.0,
+        "init_sigma": 10.0,
+        "alpha": 0.4096212254483769,
+        "sigma": 1.4187924176942737,
+        "repo_fixed_map_log_mll": -22.550992720574676,
+        "exact_blr_log_mll_at_repo_solution": -21.438118031042094,
+        "steps": 200,
+        "lr": 0.1
+      },
+      {
+        "init_alpha": 1.5,
+        "init_sigma": 1.5,
+        "alpha": 0.4096305362798142,
+        "sigma": 1.4188428420575505,
+        "repo_fixed_map_log_mll": -22.55099270708147,
+        "exact_blr_log_mll_at_repo_solution": -21.43827806883143,
+        "steps": 200,
+        "lr": 0.1
+      },
+      {
+        "init_alpha": 0.1,
+        "init_sigma": 0.5,
+        "alpha": 0.4096537444525634,
+        "sigma": 1.41878763061555,
+        "repo_fixed_map_log_mll": -22.550992720899817,
+        "exact_blr_log_mll_at_repo_solution": -21.43817320699419,
+        "steps": 200,
+        "lr": 0.1
+      },
+      {
+        "init_alpha": 10.0,
+        "init_sigma": 3.0,
+        "alpha": 0.4099863230037771,
+        "sigma": 1.4187801741461854,
+        "repo_fixed_map_log_mll": -22.550993285813334,
+        "exact_blr_log_mll_at_repo_solution": -21.43885348061564,
+        "steps": 200,
+        "lr": 0.1
+      },
+      {
+        "init_alpha": 0.01,
+        "init_sigma": 10.0,
+        "alpha": 0.40959646239227754,
+        "sigma": 1.4188874298328975,
+        "repo_fixed_map_log_mll": -22.550992721932456,
+        "exact_blr_log_mll_at_repo_solution": -21.438330468059547,
+        "steps": 200,
+        "lr": 0.1
+      }
+    ],
+    "best_adam_to_repo_fixed_objective_log_mll_gap": 2.881108684960054e-10,
+    "best_adam_to_exact_blr_log_mll_gap": 1.0348957447798846,
+    "stable_across_initializations": true
+  },
+  "calibrated_posterior_covariance_check_at_best_repo_adam": {
+    "posterior_covariance_relative_error": 6.839486353862593e-16,
+    "predictive_variance_relative_error": 3.688449314834732e-16
+  },
+  "figures": {
+    "fig01": "00_Masterthesis/Knowledgebase/imgs/main/exp01/fig01_blr_vs_laplace_fixed_hyperparameters.(png,pdf)"
+  },
+  "conclusions": {
+    "fixed_hyperparameter_laplace_machinery": "PASS",
+    "laplace_mll_objective": "PASS",
+    "adam_mll_calibration": "PASS for the repository fixed-MAP objective; not an exact BLR empirical-Bayes optimizer because the production workflow keeps theta_hat fixed while varying alpha and sigma."
+  }
+}

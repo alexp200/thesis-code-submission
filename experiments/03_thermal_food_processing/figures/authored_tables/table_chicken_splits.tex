@@ -1,0 +1,21 @@
+\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}X@{}}
+  \toprule
+  Setting & Value \\
+  \midrule
+  \multicolumn{2}{@{}l}{\emph{Data and preprocessing}} \\
+  Time grid & $n_t=280$, $t_j=5j\,\mathrm{s}$ for $j=0,\ldots,279$,
+    covering $[0,1395]\,\mathrm{s}$ \\
+  Input and outputs & Oven temperature $T_{\mathrm{oven}}$,
+    probe temperatures $T_A$ and $T_B$ \\
+  Dimensions & $d_x=d_{\mathrm{out}}=2$, $d_u=1$, no augmented states \\
+  Preprocessing & Subtract the ambient equilibrium $279.15\,\mathrm{K}$,
+    then scale input and each output by standard deviations computed
+    from the current training trajectories only \\
+  \midrule
+  \multicolumn{2}{@{}l}{\emph{Simulation identifiers}} \\
+  Selection pool & $745$, $795$, $835$, $851$, $853$, $861$, $868$,
+    $873$, $874$, $888$, $899$, $902$, $905$, $906$, $917$ \\
+  AP15 test set & $313$, $320$, $344$, $378$, $383$, $407$, $412$,
+    $415$, $461$, $462$, $466$, $467$, $474$, $508$, $528$ \\
+  \bottomrule
+\end{tabularx}

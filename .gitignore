@@ -1,0 +1,27 @@
+__pycache__/
+*.py[oc]
+.venv/
+.pytest_cache/
+*.egg-info/
+.DS_Store
+
+# Supervisor-provided simulation data: NOT redistributable without the data owners' permission (see data/chicken_data/README.md, docs/DATA_ACCESS.md).
+# Anchored: the directories experiments/**/data/ hold frozen results and must stay tracked.
+/data/
+
+# Large optional bundles (hash-listed in large_assets/MANIFEST.sha256; deliver as release assets / archive, not via git).
+/large_assets/*.tar.gz
+
+# Outputs of the regeneration and validation tools
+/regenerated/
+
+# Local results of experiments/03_thermal_food_processing/al_runs/run_local.sh
+/experiments/03_thermal_food_processing/al_runs/study/results/
+/experiments/04_ded/al_runs/start_study/run/
+
+# Generated figure and table exports of the generators (thesis_figures/final); the audit files in thesis_figures/final_audit are tracked
+/experiments/*/thesis_figures/final/
+
+# Intermediate caches of the harmonic-oscillator pipeline (recomputed on demand)
+/experiments/02_harmonic_oscillator/short_horizon/data/cache/
+/experiments/02_harmonic_oscillator/swag_dependence/cache/*.npz
