@@ -1,38 +1,30 @@
-\begin{tabular}{@{}p{0.29\linewidth}p{0.65\linewidth}@{}}
+\begin{tabularx}{\linewidth}{@{}p{0.25\linewidth}X@{}}
 \toprule
 Setting & Value \\
 \midrule
-System & Harmonic oscillator, $m=1$, $k=2$ \\
-\emph{lower half} initial states
-  & $(q_0,p_0)^\top\sim\mathcal{N}((3,0)^\top,\,0.2\boldsymbol I_2)$ \\
-\emph{left half} initial states
-  & $(q_0,p_0)^\top\sim\mathcal{N}((0,3\sqrt{2})^\top,\,0.2\boldsymbol I_2)$ \\
-Training data
-  & 16 trajectories per dataset, 50 samples each on $[0,\pi/\sqrt{2}]$ \\
-Observation noise
-  & Independent zero-mean Gaussian noise, variance $0.3$ per coordinate \\
+Initial states
+  & $\boldsymbol x_0\sim\mathcal N(\boldsymbol\mu_0,0.2\boldsymbol I_2)$,
+    with $\boldsymbol\mu_0=(3,0)^\top$ for \emph{lower half}
+    and $(0,3\sqrt{2})^\top$ for \emph{left half} \\
+Data
+  & 16 trajectories per dataset, 50 times on $[0,\pi/\sqrt{2}]$.
+    Independent zero-mean Gaussian observation noise,
+    variance $0.3$ per coordinate \\
 Architecture
-  & \ac{MLP} $2\to256\to2$, $\tanh$ activation, $d_\theta=1282$ \\
-Training loss
-  & Trajectory \ac{MSE}; no added $L_2$ penalty or weight decay \\
-Optimiser and budget
-  & Adam, learning rate $10^{-3}$; 5000 full-batch steps (16 trajectories) \\
+  & \ac{NN} $2\to256\to2$, $\tanh$ activation, $d_\theta=1282$ \\
+Training
+  & Trajectory \ac{MSE}, no $L_2$ penalty or weight decay.
+    Full-batch Adam, 5000 steps at learning rate $10^{-3}$ \\
 \Ac{ODE} solver
   & Explicit Euler, step size $0.02$ \\
-Weight initialisation
-  & Semi-orthogonal, gain $1.0$ \\
-Bias initialisation
-  & Uniform on $[-1/\sqrt{d_{\mathrm{in}}},\,1/\sqrt{d_{\mathrm{in}}}]$;
-    $d_{\mathrm{in}}$ is the layer's input width \\
-Seed and arithmetic
-  & Seed 17 for data and model; \texttt{float64} \\
-\Ac{LA}
-  & Full-network \ac{GGN}; linearised trajectory and vector-field predictions \\
-Hyperparameter calibration
-  & Joint Laplace \ac{MLL} optimisation of prior precision $\alpha$ and
-    observation-noise standard deviation $\sigma_{\mathrm{n}}$ after model training \\
+Initialisation
+  & Semi-orthogonal weights, gain $1.0$.
+    Biases uniform on
+    $[-1/\sqrt{d_{\mathrm{in}}},1/\sqrt{d_{\mathrm{in}}}]$,
+    where $d_{\mathrm{in}}$ is the layer's input width \\
+Seed & 17 for data and model \\
 Evaluation
-  & Initial state at the dataset mean; 300 times on $[0,10]$;
+  & Initial state at the dataset mean, 300 times on $[0,10]$,
     vector-field grid $35\times35$ on $[-6,6]\times[-8,8]$ in $(q,p)$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}

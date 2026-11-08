@@ -11,7 +11,7 @@ Active learning with NODE and sPHNN surrogates on simulated thermal food process
 | `side_studies/n2_landscape/` | exhaustive first acquisition: a model for every second trajectory of every start (`landscape_run.py`), its table (`landscape_analysis.py`), the n_D = 1 models of the additional starts and of seed sets B, C (`n1_run.py`); stored results in `merged/`, `n1_models/` |
 | `side_studies/random_repeats/` | ten sampled Random paths per start (`plan.py`, `random_repeat_run.py`, `random_repeats_analysis.py`); stored results in `results/`, Slurm copies in `cluster/` |
 | `side_studies/criteria_offline/` | acquisition scores (MGE, VAR) of the n_D = 1 models for seed sets A, B, C (`criteria_offline.py`, `acq_criteria.py`); stored in `results/` |
-| `figures/` | `make_results_figures.py`: Figs. 4.8-4.11, B.7 and Tabs. B.14-B.21; `make_dataset_figure.py`: Fig. 4.7; `experiment_graph/`: schematics (Figs. 3.1, B.5, B.6); `al_overview/studies_io.py`: loader of the AL run records; `authored_tables/`: hand-written tables B.11-B.13, copied by the generator |
+| `figures/` | `make_results_figures.py`: Figs. 4.8-4.11, B.7 and Tabs. B.10-B.17; `make_dataset_figure.py`: Fig. 4.7; `experiment_graph/`: schematics (Figs. 3.1, B.5, B.6); `al_overview/studies_io.py`: loader of the AL run records; `authored_tables/`: hand-written tables B.8 and B.9, copied by the generator |
 | `common/` | output locations of the generators |
 | `metadata/` | seed manifests: which training used which keys and data (see its README) |
 

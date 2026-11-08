@@ -4,7 +4,7 @@ Cubic regression is linear in its four coefficients, so Bayesian linear regressi
 
 | script | content |
 |---|---|
-| `verify_analytic_cubic_regression_mll.py` | BLR versus LA at fixed hyperparameters, marginal likelihood at several (alpha, sigma) pairs, Adam calibration against the exact optima. Writes `summary.json`, Fig. 4.1, Tables B.1, B.3, B.4 |
+| `verify_analytic_cubic_regression_mll.py` | BLR versus LA at fixed hyperparameters, marginal likelihood at several (alpha, sigma) pairs, Adam calibration against the exact optima. Writes `summary.json`, Fig. 4.1, Table B.1; the fixed-hyperparameter check and the calibration optima are in `summary.json` |
 | `ffnn_uq_comparison.py` | ten network members on the same data, all UQ methods against BLR (about 3 min on one CPU). Writes Fig. 4.2, Table B.2 |
 | `common/` | export paths (`CR_EXPORT_ROOT`, `CR_AUDIT_ROOT` override them), table export, shared plot elements, network settings |
 

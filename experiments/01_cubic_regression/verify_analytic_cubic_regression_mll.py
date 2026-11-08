@@ -12,7 +12,7 @@ closed form to verify:
 2. the behavior of the repository Adam MLL calibration workflow,
 3. the fixed-hyperparameter posterior/pushforward equality (Figure 4.1).
 
-Outputs: Figure 4.1, Tables B.1, B.3 and B.4 (thesis_figures/final) and summary.json with the numbers behind them.
+Outputs: Figure 4.1 and the dataset table of Appendix B (thesis_figures/final); summary.json with the numbers behind them, including the comparison of the fixed-hyperparameter Laplace quantities with the analytic BLR and the calibration optima.
 """
 
 from __future__ import annotations
@@ -505,34 +505,12 @@ def make_fig01(base: Path, cfg: VerificationConfig, x_train, y_train, theta_true
     tps.save_figure(fig, base, generator="01_cubic_regression/verify_analytic_cubic_regression_mll.py")
 
 
-def fmt_sci(x: float, digits: int = 1) -> str:
-    """0 -> '0'; otherwise a $m \\times 10^{e}$ string with `digits` decimals in the mantissa (math mode, tabular cell)."""
-    if x == 0:
-        return "$0$"
-    m, e = f"{x:.{digits}e}".split("e")
-    return f"${m} \\times 10^{{{int(e)}}}$"
-
-
 def write_tables(summary: dict, cfg: VerificationConfig) -> None:
-    """Tabular-only .tex files (booktabs; no float, caption or label): Table B.1 (dataset), B.3 (fixed-hyperparameter check) and B.4 (calibration optima)."""
-    fixed = summary["fixed_hyperparameter_laplace"]
-    ex, fx = summary["exact_blr_mll_optimum"], summary["repo_fixed_map_mll_optimum"]
-    best = summary["repo_adam_calibration"]["best_adam"]
-    runs = summary["repo_adam_calibration"]["all_runs"]
+    """Tabular-only .tex file (booktabs; no float, caption or label): the dataset / model / training table of the thesis appendix.
+    The numerical comparison with the analytic BLR quantities (relative errors of the fixed-hyperparameter check) and the calibration optima are
+    not exported as tables; they stay in summary.json (`fixed_hyperparameter_laplace`, `exact_blr_mll_optimum`, `repo_fixed_map_mll_optimum`, `repo_adam_calibration`)."""
     EP.ensure()
-    tabs = {}
-    tabs[(EP.TAB_MAIN, "table1_dataset_configuration")] = dataset_model_training_table(cfg)            # common/export_tables.py (data + models + NN training, reporting standard)
-    tabs[(EP.TAB_MAIN, "table2_fixed_hyperparameter_check")] = [
-        "\\begin{tabular}{lr}", "\\toprule", "Quantity & Relative error \\\\", "\\midrule",
-        f"Unscaled design curvature vs.\\ $\\boldsymbol\\Phi^\\top\\boldsymbol\\Phi$ & {'$0$ (exact)' if fixed['ggn_relative_error'] == 0 else fmt_sci(fixed['ggn_relative_error'])} \\\\",
-        f"Posterior covariance vs.\\ $\\boldsymbol\\Sigma_{{\\mathrm{{BLR}}}}$ & {fmt_sci(fixed['posterior_covariance_relative_error'])} \\\\",
-        f"Predictive variance vs.\\ $\\mathrm{{diag}}(\\boldsymbol\\Psi\\boldsymbol\\Sigma_{{\\mathrm{{BLR}}}}\\boldsymbol\\Psi^\\top)$ & {fmt_sci(fixed['predictive_variance_relative_error'])} \\\\",
-        f"Dense predictive covariance vs.\\ $\\boldsymbol\\Psi\\boldsymbol\\Sigma_{{\\mathrm{{BLR}}}}\\boldsymbol\\Psi^\\top$ & {fmt_sci(fixed['predictive_dense_covariance_relative_error'])} \\\\", "\\bottomrule", "\\end{tabular}"]   # Psi = evaluation-grid features (array Phi_eval)
-    tabs[(EP.TAB_MAIN, "table4_mll_calibration_optima")] = [
-        "\\begin{tabular}{lrrr}", "\\toprule", "Optimum & $\\alpha^\\ast$ & $\\sigma_{\\mathrm{n}}^\\ast$ & $\\log p$ at optimum \\\\", "\\midrule",
-        f"Exact \\ac{{BLR}} empirical Bayes & {ex['alpha']:.4f} & {ex['sigma']:.4f} & ${ex['log_mll']:.3f}$ \\\\",
-        f"Exact fixed-\\ac{{MAP}} objective & {fx['alpha']:.4f} & {fx['sigma']:.4f} & ${fx['log_mll']:.3f}$ \\\\",
-        f"Adam (best of {len(runs)} initialisations) & {best['alpha']:.4f} & {best['sigma']:.4f} & ${best['repo_fixed_map_log_mll']:.3f}$ \\\\", "\\bottomrule", "\\end{tabular}"]
+    tabs = {(EP.TAB_MAIN, "table1_dataset_configuration"): dataset_model_training_table(cfg)}   # common/export_tables.py (data + models + NN training, reporting standard)
     for (d, name), lines in tabs.items():
         (d / f"{name}.tex").write_text("\n".join(lines) + "\n")
         print("wrote", d / f"{name}.tex")

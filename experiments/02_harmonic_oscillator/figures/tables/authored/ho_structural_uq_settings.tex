@@ -2,48 +2,26 @@
 \toprule
 Setting & Value \\
 \midrule
-Reference and members
-  & \ac{LA} and \ac{SWAG} use member 0.
-    \ac{DE}, \ac{MoLA}, and \ac{MultiSWAG} use all retained members
-    with equal weights \\
-\midrule
-\multicolumn{2}{@{}l}{\emph{Laplace methods}} \\
-Prior and curvature
-  & $\mathcal{N}(\boldsymbol 0,\alpha^{-1}\boldsymbol I_{d_\theta})$,
-    full-network \ac{GGN} of the unaveraged least-squares likelihood
-    in raw parameters \\
-Calibration
-  & Per-member Laplace \ac{MLL} optimisation of
-    $(\log\alpha,\log\sigma_{\mathrm{n}})$ at fixed trained weights.
-    Adam, 200 steps at rate $0.1$, initial $\alpha=\sigma_{\mathrm{n}}=1$ \\
-Prediction & Linearised trajectory and vector-field pushforwards,
-  no parameter samples \\
+Members & \ac{LA}/\ac{SWAG}: member 0.
+  \Ac{DE}/\ac{MoLA}/\ac{MultiSWAG}: retained members \\
 \midrule
 \multicolumn{2}{@{}l}{\emph{SWAG methods}} \\
 Continuation
-  & \ac{SGD} with mini-batches of 4 of the 16 training trajectories,
-    drawn anew at every step, 200 steps, gradient-norm clipping at 1,
+  & 200 \ac{SGD} steps at rate $10^{-1}$, batches of 4 of 16
+    trajectories drawn anew at each step, gradient-norm clipping at 1,
     no burn-in. Same penalised \ac{MSE} as training \\
 Snapshots & Every 5 continuation steps, $n_{\mathrm{snap}}=40$ \\
 Covariance
-  & Full empirical snapshot covariance, normalisation
+  & Full empirical covariance, denominator
     $n_{\mathrm{snap}}-1$, ridge
     $\delta_{\mathrm{ridge}}\boldsymbol I_{d_\theta}$ with
     $\delta_{\mathrm{ridge}}=10^{-14}$, sampling scale 1 \\
 Parameter samples
   & $n_{\mathrm{MC}}=64$ per member,
     $n_{\mathrm{MC}}n_{\mathrm{ret}}$ pooled for \ac{MultiSWAG} \\
-Continuation rate
-  & $10^{-1}$ in the comparisons. The learning-rate sweep, including
-    the default $10^{-4}$, is in \cref{app:ho-swag} \\
 Random keys
   & Mini-batch draws: $20000+k$, sampling: $30000+k$ \\
-Sample rejection & Solver failure, non-finite values, or any
-  absolute state coordinate reaching $10^6$ \\
-\midrule
-\multicolumn{2}{@{}l}{\emph{Predictive moments}} \\
-Uncertainty & Epistemic only. Calibrated observation noise scales the
-  likelihood curvature, but is not added to predictive variance \\
-Normalisation & Population moments over members or samples \\
+Sample rejection & Solver failure, non-finite output,
+  or $|x_\ell|\geq10^6$ \\
 \bottomrule
 \end{tabularx}

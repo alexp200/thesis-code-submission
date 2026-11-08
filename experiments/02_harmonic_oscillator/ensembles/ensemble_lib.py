@@ -49,7 +49,7 @@ SEEDS = tuple(range(K_ENSEMBLE))
 N_PERIODS = 15
 N_EVAL = 3000              # evaluation grid density
 
-# SWAG settings (Table B.8): SGD continuation with mini-batches of 4 of the 16 training trajectories at the learning rate SWAG_LR of the comparisons; swag_dependence/ varies the rate.
+# SWAG settings (Table B.6): SGD continuation with mini-batches of 4 of the 16 training trajectories at the learning rate SWAG_LR of the comparisons; swag_dependence/ varies the rate.
 SWAG_LR = 0.1
 SWAG_KW = dict(swag_steps=200, swag_lr=SWAG_LR, swag_freq=5, swag_optimizer="sgd", clip_grad_norm=1.0, batch_size=4)
 SWAG_MC_SAMPLES = 64

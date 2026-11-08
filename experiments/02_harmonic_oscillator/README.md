@@ -24,7 +24,7 @@ The vector-field uncertainty does not depend on the rollout horizon; the maps of
 | 2. long-horizon moments of LA, MoLA, DE | `long_horizon/compute_methods.py --model-class M --dataset D` | `long_horizon/results/methods_M_D.npz/json` (and per-member caches) |
 | 3. SWAG learning-rate study | `swag_dependence/run_sweep.py --model M --dataset D --stage sweep`, `run_sweep.py ... --stage comparison`, `aggregate.py` | `swag_dependence/cache`, `swag_dependence/comparison` |
 | 4. short-horizon data of all five methods | `short_horizon/compute_short_rollout.py --model-class M --dataset D` | `short_horizon/data/` |
-| 5. figures and tables | `figures/make_figures.py` (Figures 4.3-4.5, B.2, B.3), `figures/make_envelope_and_frequencies.py` (Figures 4.6 and B.4, Table B.10), `figures/make_tables.py` (Tables B.5-B.9) | `thesis_figures/final/` |
+| 5. figures and tables | `figures/make_figures.py` (Figures 4.3-4.5, B.2, B.3), `figures/make_envelope_and_frequencies.py` (Figure 4.6 and B.4; member frequencies as table file only), `figures/make_tables.py` (Tables B.3-B.7) | `thesis_figures/final/` |
 | Ott-style check | `ott_check/make_ott_figure.py` (Figure B.1, trains the network, about 1 min) | `thesis_figures/final/` |
 
 Steps 1-4 are stored; step 5 regenerates the figures and tables in seconds. Steps 2 and 4 are recomputed and compared with the stored results by `tools/recompute_ho.py` (docs/REPRODUCTION.md).

@@ -3,13 +3,13 @@
 Setting & \ac{NODE} & Conservative \ac{sPHNN} \\
 \midrule
 Vector field
-  & \ac{MLP} $2\to256\to2$, $\tanh$ hidden activation
+  & \ac{NN} $2\to256\to2$, $\tanh$ hidden activation
   & $\boldsymbol J\nabla\mathcal{H}_{\boldsymbol\theta}(\boldsymbol x)$,
     constant learned skew-symmetric $\boldsymbol J$ \\
 Hamiltonian
   & Not applicable
-  & Normalised sum of a learned positive-definite quadratic form
-    and a softplus \ac{FICNN} with hidden widths $[32,32]$ \\
+  & Normalised sum of a learned positive-definite quadratic base
+    potential and a softplus \ac{FICNN} residual, hidden widths $[32,32]$ \\
 Equilibrium
   & Not constrained
   & Normalisation at the origin, $\epsilon_H=10^{-6}$ \\

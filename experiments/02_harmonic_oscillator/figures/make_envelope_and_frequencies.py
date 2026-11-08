@@ -1,4 +1,4 @@
-"""Harmonic oscillator: period-maximum predictive standard deviation of the conservative sPHNN (Figure 4.6, Figure B.4) and the member-frequency table (Table B.10).
+"""Harmonic oscillator: period-maximum predictive standard deviation of the conservative sPHNN (Figure 4.6, Figure B.4) and the member-frequency table (written for the audit; the thesis states the frequencies in the text).
 
 Stored results are re-plotted and re-tabulated; nothing is trained or re-evaluated. Outputs (paths from common/export_paths.py):
   fig03a_max_std_lower_half_linear, a03_max_std_left_half_linear    maximum of the predictive Std per true period, q and p, every UQ method
@@ -65,7 +65,7 @@ def max_std_sphnn_figure(ds, key, out, raw_std=False):
 
 # ---------------------------------------------------------------- member frequencies
 def table_a3():
-    """Table B.10: orbit frequencies of the retained sPHNN ensemble members (= DE members = MoLA components), from the first return of each member's rollout."""
+    """Member-frequency table: orbit frequencies of the retained sPHNN ensemble members (= DE members = MoLA components), from the first return of each member's rollout."""
     rows, tex = [], ["\\begin{tabular}{@{}lrccc@{}}", "\\toprule",
                      "Dataset & $n_{\\mathrm{ens}}$ & $\\bar\\Omega$ & $[\\Omega_{\\min},\\Omega_{\\max}]$ & $\\sigma_\\Omega/\\bar\\Omega$ [$\\%$] \\\\", "\\midrule"]
     for ds in ens_lib.DATASETS:

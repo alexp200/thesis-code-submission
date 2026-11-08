@@ -3,7 +3,7 @@ Figures:  fig04a_saturation_whiskers (Figure 4.13)   RMSE over n_D = 1..5 of the
           fig07_path_ecdf (Figure 4.14)              distribution of the path outcomes: Random paths against the AL path of each UQ method
           fig05_pick_map (Figure 4.15)               acquired simulations (AL pooled over LA / DE / MoLA vs Random) on the 5 x 5 operating grid
           fig06_error_ratio (Figure B.9)             per-simulation RMSE ratio AL / Random expectation (geometric mean over starts and methods)
-Tables (tabular only):  tableA_al_vs_random (B.25), tableA_path_ecdf (B.26); the authored tables B.22-B.24 are copied from figures/authored_tables/.
+Tables (tabular only):  tableA_al_vs_random, tableA_path_ecdf; the authored tables table_ded_{settings,data,training} are copied from figures/authored_tables/.
 Cohort: all starts whose three AL streams and whose Random tails are complete for n_D = 1..5 in both architectures (ten starts). Error of a node = median of the K = 3 member RMSEs over ALL 25 simulations (training trajectories included, no held-out set);
 Random expectation of a start = mean over its Random tails. Run records are read through ded_results_io.py; the numbers behind every figure and table are written to final_audit/figure_data/*.csv. No bootstrap intervals.
 Usage: python figures/make_results_figures.py"""
@@ -72,9 +72,9 @@ def fig_saturation(PS, nmax=5):
     FIGDATA["fig04_per_start"] = PS
 
 
-# ------------------------------------------------------------------------------------------------ Table B.25: AL against the Random expectation
+# ------------------------------------------------------------------------------------------------ Table B.21: AL against the Random expectation
 def tables(PS, nmax=5):
-    """Table B.25: geometric means of the paired ratios AL / Random expectation per method and architecture, and over all methods and starts."""
+    """Table B.21: geometric means of the paired ratios AL / Random expectation per method and architecture, and over all methods and starts."""
     NS = tuple(range(1, nmax + 1))
     P = PS[PS.N >= 2].assign(lr=lambda x: np.log(x.ratio)); R = P.groupby(["arch", "stream", "N"]).lr.mean().apply(np.exp).rename("ratio").reset_index()
     Ns = NS[1:]
@@ -168,7 +168,7 @@ def fig_error_ratio(d, runs, nmax=4):
     tps.save_figure(fig, EP.IMG_MAIN / key, generator=GEN); plt.close(fig); FIGDATA["fig06_error_ratio"] = pd.DataFrame(rows)
 
 
-# ------------------------------------------------------------------------------------------------ Figure 4.14 and Table B.26: path outcomes
+# ------------------------------------------------------------------------------------------------ Figure 4.14 and Table B.22: path outcomes
 def path_errors(d, runs, nmax=4):
     """one value per path: error at n_D = nmax and path error = geometric mean of the node error over n_D = 2..nmax; AL: one path per start and method, Random: every Random run of every start"""
     starts = sorted(int(x) for x in runs.start.unique()); tails = runs.groupby("start").stream.unique(); dd = d[d.start.isin(starts)]; rows = []
@@ -181,7 +181,7 @@ def path_errors(d, runs, nmax=4):
 
 
 def fig_path_ecdf(d, runs, nmax=4):
-    """Figure 4.14 and Table B.26: empirical distribution of the path outcomes. Rows: sPHNN, NODE; left column: path error (geometric mean of the node error over n_D = 2..nmax), right column: error at n_D = nmax.
+    """Figure 4.14 and Table B.22: empirical distribution of the path outcomes. Rows: sPHNN, NODE; left column: path error (geometric mean of the node error over n_D = 2..nmax), right column: error at n_D = nmax.
     Random: all paths of all starts (one curve), AL: the paths of each UQ method (one per start); dashed vertical line = mean of the Random paths."""
     from matplotlib.lines import Line2D
     key = "fig07_path_ecdf"

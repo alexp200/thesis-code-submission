@@ -8,32 +8,18 @@
     $d_\theta=381$, fixed zero equilibrium. Constant learned
     skew-symmetric $\boldsymbol J$, positive-definite $\boldsymbol R$,
     and input matrix $\boldsymbol G$ \\
-  Weight initialisation & Fan-in variance scaling with truncated-normal draws,
-    scale $10^{-2}$ (\ac{NODE}) or $10^{-4}$ (\ac{sPHNN}) \\
   \midrule
-  \multicolumn{2}{@{}l}{\emph{Training and integration}} \\
+  \multicolumn{2}{@{}l}{\emph{Training}} \\
   Objective & Trajectory \ac{MSE} plus
     $\tfrac12\lambda\|\boldsymbol\theta\|^2$ on trainable raw parameters,
     $\lambda=10^{-6}$ \\
   Optimiser & Full-batch Adam, constant learning rate $10^{-4}$ \\
   Training steps & \ac{NODE}: $30000$, \ac{sPHNN}: $20000$ \\
-  Reporting members & $n_{\mathrm{ens}}=3$, fresh weights at each node \\
-  Solver & Adaptive Tsit5 with \acs{PID} controller,
-    absolute and relative tolerances $10^{-6}$,
-    maximum $262144$ steps \\
   \midrule
   \multicolumn{2}{@{}l}{\emph{Inference and acquisition}} \\
-  Acquisition models & \ac{LA}: predeclared member 0.
-    \ac{DE}: population moments of retained predictions.
-    \ac{MoLA}: equally weighted retained components \\
-  Laplace curvature & Full-network \ac{GGN} of the trajectory-fitting problem \\
-  Post-hoc calibration & Isotropic Gaussian prior, joint \ac{MLL}
-    calibration of prior precision $\alpha$ and noise standard deviation $\sigma_{\mathrm n}$,
-    $200$ Adam steps at rate $0.1$ per component, trained weights fixed \\
-  Marginal pushforward & Full-spectrum eigen-direction \acp{JVP} \\
+  \Ac{LA} reference & Predeclared reporting member 0 \\
+  Acquisition criteria & \ac{MGE} and \ac{VAR} \\
   Acquisition variances & $d_y=n_t d_{\mathrm{out}}=560$ marginal epistemic
     variances in normalised coordinates \\
-  Acquisition stabilisation & Variance floor $v_{\min}=10^{-12}$ for \ac{MGE} \\
-  Numerics & \texttt{float64} \\
   \bottomrule
 \end{tabularx}

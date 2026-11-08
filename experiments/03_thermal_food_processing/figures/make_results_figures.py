@@ -4,8 +4,8 @@ Figures:  fig05a_saturation_whiskers (Figure 4.8)   AP15 test RMSE over n_D = 1.
           fig06_picks_and_outcome (Figure 4.10)     left: gain over the Random expectation per temperature bucket of the picked trajectory; right: mean oven temperature of the start against that of the pick (n_D = 1 -> 2)
           fig07_pick_quality (Figure 4.11)          share of the gap between the Random expectation and the best candidate that the pick closes
           figA1_saturation_full (Figure B.7)        AP15 test RMSE over n_D = 1..15 against the single stored Random path of each start (ten original starts)
-Tables (tabular only):  table_start_dependence (B.20), tableA_{al_vs_random (B.14), al_vs_random_runs (B.15), path_ecdf (B.16), temperature_selection (B.17), uq_agreement (B.18), fig07_closure (B.19), seed_reproducibility (B.21)}.tex;
-          the authored tables B.11-B.13 are copied from figures/authored_tables/. Figure 4.7 (dataset) is made by make_dataset_figure.py, the schematics by experiment_graph/, the cost figure by cost_analysis/.
+Tables (tabular only):  table_start_dependence, tableA_{al_vs_random, al_vs_random_runs, path_ecdf, temperature_selection, uq_agreement, fig07_closure, seed_reproducibility}.tex;
+          the authored tables table_chicken_settings and table_chicken_splits are copied from figures/authored_tables/. Figure 4.7 (dataset) is made by make_dataset_figure.py, the schematics by experiment_graph/, the cost figure by cost_analysis/.
 Sources: AP15 evaluations of the AL runs (al_overview/studies_io.py), n2_landscape/merged (landscape of the second trajectory, seed sets A and B), criteria_offline/results (offline scores of the n_D = 1 ensembles, seed sets A, B, C), random_repeats/results.
 The numbers behind every figure and table are written to final_audit/figure_data/*.csv. Usage: python figures/make_results_figures.py"""
 import shutil
@@ -177,9 +177,9 @@ def fig_saturation_full(W):
     tps.save_figure(fig, EP.IMG_APP / name, generator=GEN)
 
 
-# ------------------------------------------------------------------------------------------------------------------------------ Figure 4.10 and Table B.17: picks (start vs pick temperature, gain per temperature bucket)
+# ------------------------------------------------------------------------------------------------------------------------------ Figure 4.10 and Table B.13: picks (start vs pick temperature, gain per temperature bucket)
 def fig_picks(L, P, temp):
-    """Figure 4.10 (gain per temperature bucket of the pick; start against pick temperature) and Table B.17; returns the bucket edges."""
+    """Figure 4.10 (gain per temperature bucket of the pick; start against pick temperature) and Table B.13; returns the bucket edges."""
     q = np.quantile(list(temp.values()), [1 / 3, 2 / 3]); tmax = max(temp.values())
     BUCKET = [f"$\\leq$ {q[0]:.0f}", f"$\\leq$ {q[1]:.0f}", f"$\\leq$ {tmax:.0f}"]; terc = lambda x: np.where(np.asarray(x) <= q[0], 0, np.where(np.asarray(x) <= q[1], 1, 2))
     L = L.assign(D=L.rand - L.rmse, bucket=terc([temp[c] for c in L.cand])); P = P.assign(bucket=terc(P.T_pick))
@@ -221,17 +221,17 @@ def fig_picks(L, P, temp):
     for arch in ARCHS:
         a = P[P.arch == arch]; cnt.append([np.mean(a.bucket == b) for b in range(3)])
     pearson = {r.arch: (r.pearson, r.spearman) for r in S_.itertuples()}
-    lines = ["\\begin{tabularx}{\\linewidth}{@{}Xrrr@{}}", "\\toprule", "\\multicolumn{4}{@{}l}{\\emph{Start and pick temperature: MoLA/MGE}} \\\\", "Architecture & $n_{\\mathrm{start}}$ & Pearson $r$ & Spearman $\\rho$ \\\\", "\\midrule"]
+    lines = ["\\begin{tabular}{@{}lrrr@{}}", "\\toprule", "\\multicolumn{4}{@{}l}{\\emph{Start and pick temperature: MoLA/MGE}} \\\\", "Architecture & $n_{\\mathrm{start}}$ & Pearson $r$ & Spearman $\\rho$ \\\\", "\\midrule"]
     lines += [f"{a} & {int(S_[S_.arch == a].n.iloc[0])} & {pearson[a][0]:.2f} & {pearson[a][1]:.2f} \\\\" for a in ARCHS]
-    lines += ["\\midrule", "\\multicolumn{4}{@{}l}{\\emph{Selection shares: all six strategies}} \\\\", "Architecture & Low & Middle & High \\\\", "\\midrule"]
-    lines += [f"{a} & " + " & ".join(pct(x) for x in c) + " \\\\" for a, c in zip(ARCHS, cnt)] + [f"Uniform candidate reference & " + " & ".join(pct(np.mean(terc(list(temp.values())) == b)) for b in range(3)) + " \\\\", "\\bottomrule", "\\end{tabularx}"]
+    lines += ["\\midrule", "\\multicolumn{4}{@{}l}{\\emph{Selection shares: all six strategies}} \\\\", "Architecture & " + " & ".join(f"$\\leq{u:.0f}$" for u in (q[0], q[1], tmax)) + " \\\\", "\\midrule"]
+    lines += [f"{a} & " + " & ".join(pct(x) for x in c) + " \\\\" for a, c in zip(ARCHS, cnt)] + [f"Uniform candidate reference & " + " & ".join(pct(np.mean(terc(list(temp.values())) == b)) for b in range(3)) + " \\\\", "\\bottomrule", "\\end{tabular}"]
     write_tex("tableA_temperature_selection", lines, EP.TAB_APP)
     return q
 
 
-# ------------------------------------------------------------------------------------------------------------------------------ Figure 4.11 and Table B.19: gap closed by the pick
+# ------------------------------------------------------------------------------------------------------------------------------ Figure 4.11 and Table B.15: gap closed by the pick
 def fig_pick_quality(P):
-    """Figure 4.11 (boxplots of the gap closure over the 15 starts) and Table B.19 (median [Q25, Q75])."""
+    """Figure 4.11 (boxplots of the gap closure over the 15 starts) and Table B.15 (median [Q25, Q75])."""
     P = P.assign(closure=(P.rand - P.rmse) / (P.rand - P.best)); key = "fig07_pick_quality"; tps.apply_style(key); fig, axs = plt.subplots(1, 2, figsize=tps.figsize_for(key, 2.75), sharey=True, gridspec_kw={"wspace": 0.22})
     for ax, arch in zip(axs, ARCHS):
         for j, c in enumerate(("sum_variance", "sum_marginal")):
@@ -252,7 +252,7 @@ def fig_pick_quality(P):
     write_tex("tableA_fig07_closure", lines + ["\\bottomrule", "\\end{tabular}"], EP.TAB_APP)
 
 
-# ------------------------------------------------------------------------------------------------------------------------------ Tables B.20 and B.21: start dependence and seed reproducibility
+# ------------------------------------------------------------------------------------------------------------------------------ Tables B.16 and B.17: start dependence and seed reproducibility
 def seed_set_agreement():
     """Per architecture, start, method and criterion: do the offline scores of the n_D = 1 ensembles of the seed sets A, B and C select the same candidate?"""
     rows = []
@@ -266,7 +266,7 @@ def seed_set_agreement():
 
 
 def tables_start_dependence(L, V):
-    """Table B.20 (agreement of the rankings of two different starts) and Table B.21 (candidate ranking under seed sets A and B; picks under seed sets A, B, C)."""
+    """Table B.16 (agreement of the rankings of two different starts) and Table B.17 (candidate ranking under seed sets A and B; picks under seed sets A, B, C)."""
     rows = []
     for arch in ARCHS:
         la = L[L.arch == arch]; true = la.pivot(index="cand", columns="start", values="rmse"); A = la.pivot(index="cand", columns="start", values="A"); B = la.pivot(index="cand", columns="start", values="B")
@@ -280,28 +280,28 @@ def tables_start_dependence(L, V):
             sh = [i for i in POOL if i != s]; rows.append(dict(arch=arch, kind="true gain, same start, seed set A vs B", same=int(A.loc[sh, s].idxmin() == B.loc[sh, s].idxmin()), rho=spearmanr(A.loc[sh, s], B.loc[sh, s])[0]))
     R7 = pd.DataFrame(rows); T7 = R7.groupby(["arch", "kind"]).agg(n=("same", "size"), top1=("same", "mean"), rho_median=("rho", "median"), rho_q25=("rho", lambda x: x.quantile(.25)), rho_q75=("rho", lambda x: x.quantile(.75))).reset_index(); FIGDATA["table_start_dependence"] = T7
     order = ["true gain, two different starts"] + [f"{m}, {CRIT_LABEL[c]}: score, two different starts" for m, c in STREAMS]
-    lab = {order[0]: "Post-acquisition test error"}; lab.update({o: o.replace(": score, two different starts", "") + ", acquisition score" for o in order[1:]})
-    lines = ["\\begin{tabular}{@{}lrrrr@{}}", "\\toprule", " & \\multicolumn{2}{c}{sPHNN} & \\multicolumn{2}{c}{NODE} \\\\", "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}", "Quantity & top-1 & $\\rho$ [Q25, Q75] & top-1 & $\\rho$ [Q25, Q75] \\\\", "\\midrule"]
+    lab = {order[0]: "Candidate test error"}; lab.update({o: o.replace(": score, two different starts", "") for o in order[1:]})
+    lines = ["\\begin{tabular}{@{}lrrrr@{}}", "\\toprule", " & \\multicolumn{2}{c}{sPHNN} & \\multicolumn{2}{c}{NODE} \\\\", "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}", "Quantity / strategy & top-1 & $\\rho$ [Q25, Q75] & top-1 & $\\rho$ [Q25, Q75] \\\\", "\\midrule"]
     for o in order:
         cells = []
         for arch in ("sPHNN", "NODE"):
             r = T7[(T7.arch == arch) & (T7.kind == o)].iloc[0]; cells += [pct(r.top1), f"{r.rho_median:.2f} [{r.rho_q25:.2f}, {r.rho_q75:.2f}]"]
         lines.append(f"{lab[o]} & " + " & ".join(cells) + " \\\\")
         if o == order[0]:
-            lines.append("\\midrule")
+            lines += ["\\midrule", "\\multicolumn{5}{@{}l}{\\emph{Acquisition scores}} \\\\"]
     write_tex("table_start_dependence", lines + ["\\midrule", f"chance level & {pct(1 / (len(POOL) - 2))} & 0 & {pct(1 / (len(POOL) - 2))} & 0 \\\\", "\\bottomrule", "\\end{tabular}"], EP.TAB_APP)
     FIGDATA["seed_set_picks"] = ST = seed_set_agreement(); ab = "true gain, same start, seed set A vs B"; r_ = {a_: T7[(T7.arch == a_) & (T7.kind == ab)].iloc[0] for a_ in ARCHS}
-    lines = ["\\begin{tabular}{@{}lrr@{}}", "\\toprule", "Quantity & sPHNN & NODE \\\\", "\\midrule", "Same lowest-error candidate, A vs B & " + " & ".join(pct(r_[a_].top1) for a_ in ("sPHNN", "NODE")) + " \\\\",
-             "Candidate-error rank correlation, A vs B & " + " & ".join(f"{r_[a_].rho_median:.2f} [{r_[a_].rho_q25:.2f}, {r_[a_].rho_q75:.2f}]" for a_ in ("sPHNN", "NODE")) + " \\\\",
-             "Median absolute error difference, A vs B [K] & " + " & ".join(f"{(L[L.arch == a_].A - L[L.arch == a_].B).abs().median():.3f}" for a_ in ("sPHNN", "NODE")) + " \\\\", "\\midrule"]
+    lines = ["\\begin{tabular}{@{}lrr@{}}", "\\toprule", "Quantity / strategy & sPHNN & NODE \\\\", "\\midrule", "Same lowest-error candidate, A vs B & " + " & ".join(pct(r_[a_].top1) for a_ in ("sPHNN", "NODE")) + " \\\\",
+             "Error-rank correlation, A vs B & " + " & ".join(f"{r_[a_].rho_median:.2f} [{r_[a_].rho_q25:.2f}, {r_[a_].rho_q75:.2f}]" for a_ in ("sPHNN", "NODE")) + " \\\\",
+             "Median absolute error difference [K] & " + " & ".join(f"{(L[L.arch == a_].A - L[L.arch == a_].B).abs().median():.3f}" for a_ in ("sPHNN", "NODE")) + " \\\\", "\\midrule", "\\multicolumn{3}{@{}l}{\\emph{Identical pick under seed sets A, B, C}} \\\\"]
     for m, c in STREAMS:
-        lines.append(f"{m}, {CRIT_LABEL[c]}: identical pick for seed sets A, B, C & " + " & ".join(pct(ST[(ST.arch == a_) & (ST.method == m) & (ST.crit == c)].same_all.mean()) for a_ in ("sPHNN", "NODE")) + " \\\\")
+        lines.append(f"{m}, {CRIT_LABEL[c]} & " + " & ".join(pct(ST[(ST.arch == a_) & (ST.method == m) & (ST.crit == c)].same_all.mean()) for a_ in ("sPHNN", "NODE")) + " \\\\")
     write_tex("tableA_seed_reproducibility", lines + ["\\bottomrule", "\\end{tabular}"], EP.TAB_APP)
 
 
-# ------------------------------------------------------------------------------------------------------------------------------ Tables B.18, B.14, B.15: UQ agreement, AL against Random
+# ------------------------------------------------------------------------------------------------------------------------------ Tables B.14, B.10, B.11: UQ agreement, AL against Random
 def table_uq_agreement(P):
-    """Table B.18: how often LA, DE and MoLA pick the same second trajectory."""
+    """Table B.14: how often LA, DE and MoLA pick the same second trajectory."""
     ag = []
     for arch in ARCHS:
         for c in ("sum_marginal", "sum_variance"):
@@ -316,7 +316,7 @@ TIE_TOL_K = 1e-12                                                  # a single Ra
 
 
 def table_al_vs_runs(PS, RUNS):
-    """Table B.15: share of the single Random runs of a start whose error is larger than the error of the AL run of that start (mean over the 15 starts); 0.5 = AL is not better than a random run"""
+    """Table B.11: share of the single Random runs of a start whose error is larger than the error of the AL run of that start (mean over the 15 starts); 0.5 = AL is not better than a random run"""
     Ns = (2, 3, 4, 5); rows = []
     for r in PS[PS.N >= 2].itertuples():
         ru = RUNS[(RUNS.arch == r.arch) & (RUNS.start == r.start) & (RUNS.N == r.N)].rmse.to_numpy(); rows.append(dict(arch=r.arch, stream=r.stream, start=r.start, N=r.N, win=float(((ru - r.al) > TIE_TOL_K).mean())))
@@ -330,7 +330,7 @@ def table_al_vs_runs(PS, RUNS):
 
 
 def table_al_vs_random(PS):
-    """Table B.14: paired ratio AL / Random expectation per start; per stream the geometric mean over the 15 starts"""
+    """Table B.10: paired ratio AL / Random expectation per start; per stream the geometric mean over the 15 starts"""
     Ns = (2, 3, 4, 5); P = PS[PS.N >= 2].assign(lr=lambda d: np.log(d.ratio)); R = P.groupby(["arch", "stream", "N"]).lr.mean().apply(np.exp).rename("ratio").reset_index(); FIGDATA["al_vs_random_ratio"] = R
     lines = ["\\begin{tabularx}{\\linewidth}{@{}Xrrrrrrrr@{}}", "\\toprule", " & \\multicolumn{4}{c}{sPHNN} & \\multicolumn{4}{c}{NODE} \\\\", "\\cmidrule(lr){2-5}\\cmidrule(lr){6-9}",
              "Strategy & " + " & ".join(f"$n_D={n}$" for n in Ns) + " & " + " & ".join(f"$n_D={n}$" for n in Ns) + " \\\\", "\\midrule"]
@@ -339,9 +339,9 @@ def table_al_vs_random(PS):
     write_tex("tableA_al_vs_random", lines + ["\\bottomrule", "\\end{tabularx}"], EP.TAB_APP)
 
 
-# ------------------------------------------------------------------------------------------------------------------------------ Figure 4.9 and Table B.16: path outcomes
+# ------------------------------------------------------------------------------------------------------------------------------ Figure 4.9 and Table B.12: path outcomes
 def fig_path_ecdf(PS, blocks):
-    """Figure 4.9 and Table B.16: empirical distribution of the path outcomes. Rows: sPHNN, NODE; left column: path error (geometric mean of the node error over n_D = 2..5 of one path), right column: node error at n_D = 5.
+    """Figure 4.9 and Table B.12: empirical distribution of the path outcomes. Rows: sPHNN, NODE; left column: path error (geometric mean of the node error over n_D = 2..5 of one path), right column: node error at n_D = 5.
     Random: all 150 random paths (15 starts x 10 paths), grey; AL: the 15 paths of each of the six streams (colour = UQ method, thick = MGE, thin = VAR); dashed vertical line = mean of the Random paths."""
     C = pd.read_csv(RR / "random_cells.csv"); C = C[C.start.isin(blocks) & (C.N >= 2) & (C.N <= 5)]
     R = C.groupby(["arch", "start", "r"]).rmse.agg(path_error=lambda x: float(np.exp(np.log(x).mean()))).reset_index()
@@ -381,7 +381,7 @@ def fig_path_ecdf(PS, blocks):
 # ------------------------------------------------------------------------------------------------------------------------------ export and main
 def export_authored_tables():
     """Copy the authored tables (figures/authored_tables/) unchanged to the export folder."""
-    for n in ("table_chicken_settings", "table_chicken_splits", "tableA0_graph_chicken"):
+    for n in ("table_chicken_settings", "table_chicken_splits"):
         EP.TAB_APP.mkdir(parents=True, exist_ok=True); shutil.copyfile(EP.ROOT / "figures/authored_tables" / f"{n}.tex", EP.TAB_APP / f"{n}.tex")
 
 
@@ -393,10 +393,10 @@ def main():
     W = D0[D0.study.isin(["warm_small_K3", "warm_extra5_K3"])].rename(columns={"median": "ap15"})[["arch", "method", "criterion", "path", "N", "ap15", "train_ids", "members"]]
     W["start"] = W.train_ids.apply(lambda t: t[0]); blocks = sorted(W.start.unique()); blocks_orig = sorted(W[D0.loc[W.index, "study"] == "warm_small_K3"].start.unique())
     rs = pd.read_csv(RR / "random_summary.csv"); rs = rs[rs.start.isin(blocks)]; L, V, temp = landscape(), scores(), oven_means()
-    # learning curves and path outcomes (Figures 4.8, 4.9, B.7; Tables B.14-B.16)
+    # learning curves and path outcomes (Figures 4.8, 4.9, B.7; Tables B.10-B.12)
     PS = saturation_per_start(W, rs); fig_saturation(PS); fig_path_ecdf(PS, blocks); fig_saturation_full(W[W.start.isin(blocks_orig)])
     RUNS = random_runs(L); table_al_vs_random(PS); table_al_vs_runs(PS, RUNS)
-    # first acquisition: picks against the landscape and the offline scores (Figures 4.10, 4.11; Tables B.17-B.21)
+    # first acquisition: picks against the landscape and the offline scores (Figures 4.10, 4.11; Tables B.13-B.17)
     P = pick_table(L, W, temp); check_picks(W, pick_table_offline(V, L, temp))
     q = fig_picks(L, P, temp); print("temperature bucket edges:", q)
     fig_pick_quality(P); tables_start_dependence(L, V); table_uq_agreement(P)

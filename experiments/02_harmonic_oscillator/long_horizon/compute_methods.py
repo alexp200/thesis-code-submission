@@ -5,7 +5,7 @@ All three start from the same K = 10 MAP members (train_ensembles.py) after the 
   MoLA  uniform mixture of the linearized-Laplace components of all retained members (law of total variance)
   DE    the retained MAP members
 Mean and standard deviation of q and p on the grid t in [0, 15 T_true] (population statistics, ddof = 0). For the sPHNN the orbit frequency of every retained member is stored
-as well: Omega = 2 pi / T with T the first return of the MAP orbit to the Poincare section (Table B.10). SWAG and MultiSWAG: swag_dependence/.
+as well: Omega = 2 pi / T with T the first return of the MAP orbit to the Poincare section (member-frequency table). SWAG and MultiSWAG: swag_dependence/.
 No sampling from any Laplace posterior is done anywhere.
 
 Usage: python -u compute_methods.py --model-class sPHNN --dataset lower_half

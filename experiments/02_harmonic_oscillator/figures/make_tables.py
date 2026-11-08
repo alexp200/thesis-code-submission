@@ -1,4 +1,4 @@
-"""Harmonic oscillator: SWAG learning-rate table (Table B.9) and the authored settings tables (Tables B.5-B.8).
+"""Harmonic oscillator: SWAG learning-rate table (Table B.7) and the authored settings tables (Tables B.3-B.6).
 
 Format of every .tex: LaTeX `tabular` only (no table float, caption, label, resizebox), booktabs rules, plain text + math mode + \\textbf / \\mathbf only, so that the thesis can wrap it with
 \\resizebox{\\linewidth}{!}{\\input{...}}. Number format (`num`): 3 significant digits, scientific as a{\\cdot}10^{b} for |x| < 1e-2 and |x| >= 1e3.
