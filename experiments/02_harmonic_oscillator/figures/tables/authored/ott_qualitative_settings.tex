@@ -8,8 +8,7 @@ Initial states
     and $(0,3\sqrt{2})^\top$ for \emph{left half} \\
 Data
   & 16 trajectories per dataset, 50 times on $[0,\pi/\sqrt{2}]$.
-    Independent zero-mean Gaussian observation noise,
-    variance $0.3$ per coordinate \\
+    i.i.d. observation noise $\mathcal N(0,0.3)$ per coordinate \\
 Architecture
   & \ac{NN} $2\to256\to2$, $\tanh$ activation, $d_\theta=1282$ \\
 Training

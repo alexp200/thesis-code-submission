@@ -9,8 +9,7 @@ Initial-state distribution
   & $\boldsymbol{x}_0\sim\mathcal{N}(\boldsymbol{\mu}_0,0.2\boldsymbol I_2)$,
     $\boldsymbol{\mu}_0=(3,0)^\top$ for \emph{lower half},
     $(0,3\sqrt{2})^\top$ for \emph{left half} \\
-Observation noise & Independent zero-mean Gaussian noise with variance
-  $0.3$ per scalar observation \\
+Observation noise & i.i.d. $\mathcal N(0,0.3)$ per scalar observation \\
 Data seed & JAX key 17 folded with dataset offset 0 / 1
   for \emph{lower half} / \emph{left half} \\
 \midrule
