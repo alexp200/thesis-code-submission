@@ -12,7 +12,7 @@ The raw simulation data are not part of this repository. Place the files at the 
 | `data/directed_energy_deposition/max_simulation/dataset.nc` | 441,804,120 | `e04bd527a80b6b45a14a7b65f76fbe1c6b9e71071b72da92f57b6ac14331986e` | DED: 25 simulations; all DED training and evaluation, Figure 4.12 |
 | `data/directed_energy_deposition/max_simulation/mesh.vtk` | 139,246 | `903f3b349e4dbb84609ec38d2a7bb25ef24e7cbe930787304e1967c5b4015bdd` | DED mesh, Figure 4.12 |
 
-Without the raw data, Level 1 regenerates 50 of the 54 files (all except Figure 4.7 and the three panels of Figure 4.12).
+Without the raw data, Level 1 regenerates 46 of the 50 figure and table files of the thesis (all except Figure 4.7 and the three panels of Figure 4.12).
 
 ## Large assets
 

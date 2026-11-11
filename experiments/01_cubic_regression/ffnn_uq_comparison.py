@@ -7,8 +7,8 @@ members are filtered with the
 LA:  GGN of the member (full), isotropic prior; prior precision alpha and noise std sigma calibrated by the Laplace marginal likelihood (repository workflow, Adam 200 steps, lr 0.1),
      independently per member; Sigma = (alpha I + GGN / sigma^2)^-1; linearized predictive, no sampling.   MoLA: uniform mixture of the K Laplace components.   DE: the K MAP members.
 SWAG: SGD continuation of the member (2000 steps, mini-batches of ONE of the 11 points, gradient clipping 1, snapshot every 10 steps = 200 snapshots, learning rate 0.5, full covariance, ridge 1e-14, 64 samples).
-     This setting is a VISUALIZATION choice, not the reference rule of the harmonic-oscillator study: the marginals of the plotted parameters have a clearly visible Gaussian width (std 0.2-0.35; lr 0.3 with batch 4 gives 0.1,
-     which looks like spikes next to the LA marginals). The price: the function-space Std of SWAG is larger than LA's inside the data and the SWA mean fits the data less closely.
+     This is a visualization choice, not the reference rule of the harmonic-oscillator study: it gives the plotted parameter marginals a visible width (std 0.2-0.35),
+     at the price of a function-space Std larger than LA's inside the data and a SWA mean that fits the data less closely.
      MultiSWAG: pooled samples of all members.
 Parameter space: marginals of the four best-determined parameters under LA of member 0 (smallest marginal std), the same four indices in every method:
      LA / SWAG single Gaussians around member 0, DE Dirac deltas (arrows), MoLA / MultiSWAG uniform mixtures of the K component marginals (the marginal of a Gaussian mixture is the mixture of the 1D marginals).
