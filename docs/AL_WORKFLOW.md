@@ -2,11 +2,11 @@
 
 How the two active-learning (AL) experiments run, step by step. Paths are relative to the repository root.
 
-## The protocol of Figure 3.1
+## The protocol of Figure 3.2
 
-![Figure 3.1: the trajectory-pool AL loop](figures/al_flowchart.png)
+![Figure 3.2: the trajectory-pool AL loop](figures/al_flowchart.png)
 
-*Figure 3.1 of the thesis (generator: `experiments/03_thermal_food_processing/figures/experiment_graph/al_flowchart.py`). The experiments stop at the fixed budget n_D = n_D,max; the optional tolerance E_val ≤ E_tol is not used. UQ = uncertainty quantification.*
+*Figure 3.2 of the thesis (generator: `experiments/03_thermal_food_processing/figures/experiment_graph/al_flowchart.py`). The experiments stop at the fixed budget n_D = n_D,max; the optional tolerance E_val ≤ E_tol is not used. UQ = uncertainty quantification.*
 
 The Random baseline selects uniformly from the same pool. A *path* is one run of this loop (one start, one architecture, one method); the experiments are many paths.
 
@@ -24,7 +24,7 @@ Both workflows are built for long cluster runs and therefore share three propert
 
 200 paths = *tasks* in `study/plan.json`: 2 architectures (NODE, sPHNN) × methods × 15 starts. Ten starts run to n_D = 15 (with Random), five to n_D = 5 (without Random). A path has 3 · n_D,max − 1 phases (train, evaluate, acquire per size; the last size has no acquire). `iterNN` in file names is n_D − 1. Commands: `al_runs/README.md`.
 
-### Figure 3.1 and the code
+### Figure 3.2 and the code
 
 | box | where | what it does |
 |---|---|---|
@@ -37,7 +37,7 @@ Both workflows are built for long cluster runs and therefore share three propert
 | Acquire and add | `selections/iterNN.json`, `store.py::state` | the pick is stored; the next call of `state` appends it to the training set |
 | (loop) | `run_local.sh` | the shell loop that starts one phase after the other |
 
-### Differences from Figure 3.1
+### Differences from Figure 3.2
 
 - **Random** does not draw at every step: the plan fixes, for every path, the order in which Random adds trajectories (`random_orders`), which is a uniform draw without replacement from the same pool.
 - **Evaluate** only reports. The test errors never enter the selection, and the tolerance E_val ≤ E_tol is not used; the stop is the fixed budget.
@@ -50,7 +50,7 @@ Both workflows are built for long cluster runs and therefore share three propert
 
 The same loop, organised differently. All paths of a plan advance together, size by size: a coordinator (`control.py`) collects the work of one training-set size from all paths, removes duplicates, and hands it out as *tasks* (one training or one acquisition each), every task in a fresh process (`worker.py`). A path is one model (NODE, sPHNN), one start trajectory and one *stream*: `LA`, `DE`, `MoLA` or `random0` .. `random5`. Path ids look like `NODE/start12/LA`. The thesis runs have ten starts (the five of `start_study` and the five of `../final_extension`), n_D = 1..5, and the MGE criterion only. Identical training requests are trained once: all paths of a model and start share the n_D = 1 ensemble. Commands: `start_study/README.md`.
 
-### Figure 3.1 and the code
+### Figure 3.2 and the code
 
 | box | where | what it does |
 |---|---|---|
@@ -62,7 +62,7 @@ The same loop, organised differently. All paths of a plan advance together, size
 | Select candidate | `study_store.py::ranking` | descending score, ties: smaller id; the first entry is the pick (`selection.json`) |
 | Acquire and add | `control.py::frontier` | the training set of size n_D + 1 is built from the committed selection of size n_D |
 
-### Differences from Figure 3.1
+### Differences from Figure 3.2
 
 - **Evaluate** is part of the training task, and the test set is the full set of 25 simulations, including the training and pool simulations. There is no held-out test set; the errors are only reported.
 - **Random** paths have no acquisition tasks: their training sets follow a predeclared order (`study_design.py::tail`).

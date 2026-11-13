@@ -1,4 +1,4 @@
-"""Flowchart of the trajectory-pool AL loop (methodology chapter, Figure 3.1; shared by the thermal food processing and the DED experiment).
+"""Flowchart of the trajectory-pool AL loop (methodology chapter, Figure 3.2; shared by the thermal food processing and the DED experiment).
 Accessible overview, not a computational graph: one pale-blue process style (training, evaluation, scoring, selection, update), one neutral style (start, stop, decision), dark arrows,
 text 9 pt at the final document size, normal weight.  The optional validation-error stopping condition is set in subdued text (the reported experiments use the fixed budget n_D = n_{D,max}).
 Definitions (E_val, E_tol, removal of the acquired candidate from the pool, diagonal of Sigma_e only) belong into the caption.
