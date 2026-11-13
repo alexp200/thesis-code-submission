@@ -35,7 +35,7 @@ The POD bases of the DED nodes are in `large_assets/ded_pod_bases.tar.gz`, deliv
 
 ## Level 3: training
 
-The stored models were trained on a CPU cluster (Slurm) with the code in this repository; Slurm only distributes independent tasks. The stored training times add up to about 2000 hours for the thermal food processing studies and about 2000 hours for DED, so on a single machine only slices (single paths, the first training-set sizes) are practical.
+The stored models were trained on a CPU cluster (Slurm) with the code in this repository; Slurm only distributes independent tasks. The stored training times add up to many thousand hours, so on a single machine only slices (single paths, the first training-set sizes) are practical.
 
 | experiment | entry points | how to run |
 |---|---|---|

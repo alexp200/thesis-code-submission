@@ -7,11 +7,11 @@ This repository contains the experiment code and the stored results (run records
 
 ## Reproduction levels
 
-| Level | What | Needs |
-|---|---|---|
-| 1 | Regenerate the figures and tables of the thesis from the stored results (minutes) | this repository; the dataset figures 4.7 and 4.12 also need the raw data |
-| 2 | Recompute model errors from the stored checkpoints | raw data in `data/`; for DED also the POD bases from `large_assets/` |
-| 3 | Retrain the models (the full studies took about 2000 CPU hours each; single paths of the thermal food processing and DED studies run on one machine) | raw data; a CPU cluster for the full studies |
+| Level | What                                                                                                                                                          | Needs                                                                    |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 1     | Regenerate the figures and tables of the thesis from the stored results (minutes)                                                                             | this repository; the dataset figures 4.7 and 4.12 also need the raw data |
+| 2     | Recompute model errors from the stored checkpoints                                                                                                            | raw data in `data/`; for DED also the POD bases from `large_assets/`     |
+| 3     | Retrain the models (the full studies took about many thousand CPU hours each; single paths of the thermal food processing and DED studies run on one machine) | raw data; a CPU cluster for the full studies                             |
 
 The generators (Level 1), recomputation tools (Level 2) and entry points for retraining (Level 3) are listed in [`docs/REPRODUCTION.md`](docs/REPRODUCTION.md). The cubic-regression experiment (Section 4.1.1) and the Ott-style check (Appendix B.2.1) are computed from scratch by their generators and need no external data.
 
@@ -45,7 +45,7 @@ Generated figures and tables are written to `thesis_figures/` in the folder of t
 | `data/` | raw simulation data, not in the repository, see [`docs/DATA_ACCESS.md`](docs/DATA_ACCESS.md) |
 | `large_assets/` | optional archives (about 0.9 GB), delivered separately: POD bases of the DED nodes and cached results of the thermal runs |
 
-The identifier "chicken" (in `runs/03_AL_chicken`, `data/chicken_data` and in the code) refers to the thermal food processing experiment. `runs/`, `*/metadata/plans/`, `phase_integration.json` and `restart_snapshot.json` are unchanged records of the thesis runs and contain the folder names of the original working tree (`final_experiments/...`); [`docs/STRUCTURE.md`](docs/STRUCTURE.md) maps them to the current ones.
+`runs/`, `*/metadata/plans/`, `phase_integration.json` and `restart_snapshot.json` are unchanged records of the thesis runs and contain the folder names of the original working tree (`final_experiments/...`); [`docs/STRUCTURE.md`](docs/STRUCTURE.md) maps them to the current ones.
 
 ## Changes to the original code
 
