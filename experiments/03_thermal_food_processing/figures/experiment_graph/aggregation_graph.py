@@ -39,8 +39,8 @@ def build():
         return max(ws), max(hs)
 
     rows = {  # name -> list of (column, lines, colour)
-        "AL": [(0, ["$\\mathrm{RMSE}_k$", "$k\\leq n_{\\mathrm{ens}}$"], BLUE), (1, [r"$e=\mathrm{med}_k\,\mathrm{RMSE}_k$"], BLUE), (3, [r"$\mathrm{med}_s\,e$, $Q_{25}$, $Q_{75}$"], YEL)],
-        "Random": [(0, ["$\\mathrm{RMSE}_{r,k}$", "$r\\leq n_{\\mathrm{rand}},\\ k\\leq n_{\\mathrm{ens}}$"], BLUE), (1, [r"$e_r=\mathrm{med}_k\,\mathrm{RMSE}_{r,k}$"], BLUE), (2, [r"$\bar e=\mathrm{mean}_r\,e_r$"], ORG), (3, [r"$\mathrm{med}_s\,\bar e$, $Q_{25}$, $Q_{75}$"], YEL)]}
+        "AL": [(0, ["$\\mathrm{RMSE}_k$", "$k\\leq n_{\\mathrm{ens}}$"], BLUE), (1, [r"$E=\mathrm{med}_k(\mathrm{RMSE}_k)$"], BLUE), (3, [r"$\mathrm{med}_s,\,Q_{25},\,Q_{75}\,(E)$"], YEL)],
+        "Random": [(0, ["$\\mathrm{RMSE}_{r,k}$", "$r\\leq n_{\\mathrm{rand}},\\ k\\leq n_{\\mathrm{ens}}$"], BLUE), (1, [r"$E_r=\mathrm{med}_k(\mathrm{RMSE}_{r,k})$"], BLUE), (2, [r"$\bar{E}=\mathrm{mean}_r(E_r)$"], ORG), (3, [r"$\mathrm{med}_s,\,Q_{25},\,Q_{75}\,(\bar{E})$"], YEL)]}
     heads = ["member RMSEs", "node error", "within start", "across starts\n$s=1,\\ldots,n_{\\mathrm{start}}$"]
     pitch = max(size([s], fa)[1] for rw in rows.values() for _, ls, _ in rw for s in ls) + 1.2
     boxes = {nm: [(c, ls, col, *size(ls, fa)) for c, ls, col in rw] for nm, rw in rows.items()}
