@@ -10,6 +10,20 @@ How the two active-learning (AL) experiments run, step by step. Paths are relati
 
 The Random baseline selects uniformly from the same pool. A *path* is one run of this loop (one start, one architecture, one method); the experiments are many paths.
 
+`examples/02_active_learning.py` runs this loop on the harmonic oscillator in one process (`run_path`, one line per box). The experiments below do the same steps; the table shows where each step is in both.
+
+| box | `examples/02_active_learning.py` | thermal food processing | DED |
+|---|---|---|---|
+| Start | `START`, `train_ids = [START]` | `design.py::warmstarts` | `study_design.py::plan` |
+| Train n_ens models | `train_ensemble` (`_oscillator.py`) | `run.py::train` | `study_numerical.py::train` |
+| Evaluate models | `test_error` | `run.py::evaluate` | in the training task (`filter_and_report`) |
+| n_D ≥ n_D,max? | `if n_D >= n_max` | `store.py::state` | `control.py::advance_step` |
+| Score pool | `fit_uq`, then `SCORES[criterion]` | `numerical.py::acquisition_kernels`, `src/active_learning.py` | `study_numerical.py::acquire` |
+| Select candidate | `np.argmax(scores)` | `run.py::acquire` | `study_store.py::ranking` |
+| Acquire and add | `train_ids.append(pick)` | `store.py::state` | `control.py::frontier` |
+
+What the example leaves out: training filter, fixed test trajectories of the data set, paired seeds, the plan and its hashes, and resuming after a stopped job.
+
 The two experiments implement this protocol with separate workflow code. They share the library in `src/` (Laplace approximation, MoLA, ensembles and the training-RMSE filter, acquisition scores), the launcher and hardware snapshot in `experiments/shared/cluster_recovery/`, and the plotting style.
 
 Both workflows are built for long cluster runs and therefore share three properties:

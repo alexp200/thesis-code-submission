@@ -3,7 +3,7 @@
 Paths are relative to the repository root. How an active-learning (AL) path runs is described in [AL_WORKFLOW.md](AL_WORKFLOW.md); the generators and tools are listed in [REPRODUCTION.md](REPRODUCTION.md).
 
 ```
-src/                              library: models, Laplace approximation, MoLA, ensembles, SWAG, acquisition scores, POD
+src/                              library: models, Laplace approximation, MoLA, ensembles, SWAG, acquisition scores, POD (design: DESIGN.md)
 experiments/
   01_cubic_regression/            Section 4.1.1, Appendix B.1
   02_harmonic_oscillator/         Section 4.1.2, Appendix B.2
@@ -23,7 +23,8 @@ experiments/
   cost_analysis/                  Figures B.9 and B.11
 runs/                             stored run records and checkpoints
 tools/                            recomputation of stored errors, comparison of local runs with stored records
-tests/                            unit tests of src/
+examples/                         two short programs: UQ workflow and AL loop on the harmonic oscillator
+tests/                            unit tests of src/, smoke run of the examples
 docs/                             this documentation
 data/                             raw simulation data (not in git)
 large_assets/                     POD bases and caches (archives, delivered separately)
