@@ -10,8 +10,8 @@ Run the script that generates a figure or table (the generator) from its own fol
 |---|---|---|
 | `01_cubic_regression/verify_analytic_cubic_regression_mll.py` | Fig. 4.1, Tab. B.1 | no |
 | `01_cubic_regression/ffnn_uq_comparison.py` | Fig. 4.2, Tab. B.2 | no |
-| `02_harmonic_oscillator/figures/make_figures.py` | Figs. 4.3-4.5, B.3, B.4 | no |
-| `02_harmonic_oscillator/figures/make_envelope_and_frequencies.py` | Figs. 4.6, B.5 (the table of member frequencies is written but not printed) | no |
+| `02_harmonic_oscillator/figures/make_figures.py` | Figs. 4.3-4.5, B.4, B.5 | no |
+| `02_harmonic_oscillator/figures/make_envelope_and_frequencies.py` | Figs. 4.6, B.3 (the table of member frequencies is written but not printed) | no |
 | `02_harmonic_oscillator/figures/make_tables.py` | Tabs. B.3-B.7 | no |
 | `02_harmonic_oscillator/figures/make_stability_schematic.py` | Fig. 3.1 (schematic, no experiment data) | no |
 | `02_harmonic_oscillator/figures/make_member_orbits.py` | Fig. B.2 (orbits of the individual sPHNN members, stored rollouts) | no |

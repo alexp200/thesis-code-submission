@@ -1,4 +1,4 @@
-"""Short-rollout data of the harmonic-oscillator figures (Figures 4.3, 4.4, B.3, B.4 and the vector-field panels of Figure 4.5) for one (model class, data set).
+"""Short-rollout data of the harmonic-oscillator figures (Figures 4.3, 4.4, B.4, B.5 and the vector-field panels of Figure 4.5) for one (model class, data set).
 
 Models: the K = 10 ensembles of ../ensembles (checkpoints; convergence filter recorded in ../long_horizon/results/methods_*.json); the sPHNN is conservative (R and G absent).
 Methods (no sampling from any Laplace posterior):
