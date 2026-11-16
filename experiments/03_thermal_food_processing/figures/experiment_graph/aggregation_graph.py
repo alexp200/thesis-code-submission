@@ -1,4 +1,4 @@
-"""Computational graph of the aggregation behind the learning curves of the thermal food processing experiment (Figure B.6) (one fixed architecture, AL strategy and training-set size); notation only.
+"""Computational graph of the aggregation behind the learning curves of the thermal food processing experiment (Figure B.7) (one fixed architecture, AL strategy and training-set size); notation only.
 Two rows starting at the member-level test RMSEs:  AL: RMSE_k -> median over the n_ens members -> median and Q25-Q75 across the starts;
 Random: RMSE_{r,k} of every random path r -> median over the n_ens members -> arithmetic mean over the n_rand random paths within the start (extra step, highlighted) -> median and Q25-Q75 across the starts.
 No explanatory text: definitions belong into the caption.  Typography: box text 8 pt, headings 9 pt (final document size), box sizes follow from the measured text; content, symbols and

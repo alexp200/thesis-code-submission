@@ -3,7 +3,7 @@ Figures:  fig05a_saturation_whiskers (Figure 4.8)   AP15 test RMSE over n_D = 1.
           fig08_path_ecdf (Figure 4.9)              distribution of the path outcomes: 150 Random paths against the 15 AL paths of each strategy
           fig06_picks_and_outcome (Figure 4.10)     left: gain over the Random expectation per temperature bucket of the picked trajectory; right: mean oven temperature of the start against that of the pick (n_D = 1 -> 2)
           fig07_pick_quality (Figure 4.11)          share of the gap between the Random expectation and the best candidate that the pick closes
-          figA1_saturation_full (Figure B.7)        AP15 test RMSE over n_D = 1..15 against the single stored Random path of each start (ten original starts)
+          figA1_saturation_full (Figure B.8)        AP15 test RMSE over n_D = 1..15 against the single stored Random path of each start (ten original starts)
 Tables (tabular only):  table_start_dependence, tableA_{al_vs_random, al_vs_random_runs, path_ecdf, temperature_selection, uq_agreement, fig07_closure, seed_reproducibility}.tex;
           the authored tables table_chicken_settings and table_chicken_splits are copied from figures/authored_tables/. Figure 4.7 (dataset) is made by make_dataset_figure.py, the schematics by experiment_graph/, the cost figure by cost_analysis/.
 Sources: AP15 evaluations of the AL runs (al_overview/studies_io.py), n2_landscape/merged (landscape of the second trajectory, seed sets A and B), criteria_offline/results (offline scores of the n_D = 1 ensembles, seed sets A, B, C), random_repeats/results.
@@ -393,7 +393,7 @@ def main():
     W = D0[D0.study.isin(["warm_small_K3", "warm_extra5_K3"])].rename(columns={"median": "ap15"})[["arch", "method", "criterion", "path", "N", "ap15", "train_ids", "members"]]
     W["start"] = W.train_ids.apply(lambda t: t[0]); blocks = sorted(W.start.unique()); blocks_orig = sorted(W[D0.loc[W.index, "study"] == "warm_small_K3"].start.unique())
     rs = pd.read_csv(RR / "random_summary.csv"); rs = rs[rs.start.isin(blocks)]; L, V, temp = landscape(), scores(), oven_means()
-    # learning curves and path outcomes (Figures 4.8, 4.9, B.7; Tables B.10-B.12)
+    # learning curves and path outcomes (Figures 4.8, 4.9, B.8; Tables B.10-B.12)
     PS = saturation_per_start(W, rs); fig_saturation(PS); fig_path_ecdf(PS, blocks); fig_saturation_full(W[W.start.isin(blocks_orig)])
     RUNS = random_runs(L); table_al_vs_random(PS); table_al_vs_runs(PS, RUNS)
     # first acquisition: picks against the landscape and the offline scores (Figures 4.10, 4.11; Tables B.13-B.17)

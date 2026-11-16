@@ -20,7 +20,7 @@ experiments/
     figures/                        generators of figures and tables
     metadata/                       seed and provenance manifests
   shared/                         thesis_plot_style/, cluster_recovery/ (CPU launcher, POD cache, memory release), al_path_repeats/ (adapter that trains and reports DED ensembles)
-  cost_analysis/                  Figures B.8 and B.10
+  cost_analysis/                  Figures B.9 and B.11
 runs/                             stored run records and checkpoints
 tools/                            recomputation of stored errors, comparison of local runs with stored records
 tests/                            unit tests of src/

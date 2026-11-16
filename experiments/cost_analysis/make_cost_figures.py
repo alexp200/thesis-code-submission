@@ -1,4 +1,4 @@
-"""Wall time per AL step of the thermal food processing ("Chicken" in the data) and the DED experiment, one figure per data set (left sPHNN, right NODE): Figures B.8 and B.10.
+"""Wall time per AL step of the thermal food processing ("Chicken" in the data) and the DED experiment, one figure per data set (left sPHNN, right NODE): Figures B.9 and B.11.
 x = ensemble size N whose acquisition is measured (1..4); grey = training of the K = 3 ensemble (identical for all UQ methods), colour = acquisition with the UQ method (UQ fit + scoring + selection);
 median over the runs with whiskers = quartiles, small dot at the median; log axis.  Data: results/cost_data.csv (cost_data.py).
 Output: figA3_cost_wall_time / figA2_cost_wall_time (.png, .pdf) and results/cost_summary.csv.  Usage: python make_cost_figures.py"""

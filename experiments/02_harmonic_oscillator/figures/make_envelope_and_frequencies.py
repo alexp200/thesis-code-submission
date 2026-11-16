@@ -1,4 +1,4 @@
-"""Harmonic oscillator: period-maximum predictive standard deviation of the conservative sPHNN (Figure 4.6, Figure B.4) and the member-frequency table (written for the audit; the thesis states the frequencies in the text).
+"""Harmonic oscillator: period-maximum predictive standard deviation of the conservative sPHNN (Figure 4.6, Figure B.5) and the member-frequency table (written for the audit; the thesis states the frequencies in the text).
 
 Stored results are re-plotted and re-tabulated; nothing is trained or re-evaluated. Outputs (paths from common/export_paths.py):
   fig03a_max_std_lower_half_linear, a03_max_std_left_half_linear    maximum of the predictive Std per true period, q and p, every UQ method
@@ -40,7 +40,7 @@ def load(model, dataset):
 
 # ---------------------------------------------------------------- maximum of the predictive Std per period
 def max_std_sphnn_figure(ds, key, out, raw_std=False):
-    """Conservative sPHNN, q (left) and p (right): every UQ method, with one shared legend above. Unconnected markers for the period maxima and the actual Std as thin transparent line (Figures 4.6 and B.4);
+    """Conservative sPHNN, q (left) and p (right): every UQ method, with one shared legend above. Unconnected markers for the period maxima and the actual Std as thin transparent line (Figures 4.6 and B.5);
     raw_std=False: maxima joined by lines."""
     pl.tps.apply_style(key)
     d = load("sPHNN", ds)

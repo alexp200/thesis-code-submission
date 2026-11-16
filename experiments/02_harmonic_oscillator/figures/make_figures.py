@@ -1,4 +1,4 @@
-"""Harmonic oscillator: long-rollout phase-space figure (Figure 4.5) and short-rollout figures of NODE and sPHNN (Figures 4.3, 4.4, B.2, B.3); paths from common/export_paths.py.
+"""Harmonic oscillator: long-rollout phase-space figure (Figure 4.5) and short-rollout figures of NODE and sPHNN (Figures 4.3, 4.4, B.3, B.4); paths from common/export_paths.py.
 
   fig04_long_phase_space_lower_half_v2
       rows NODE (top) / sPHNN (bottom), columns LA, MoLA, DE, SWAG, MultiSWAG; background = vector-field uncertainty (own colour scale and colour bar per panel),

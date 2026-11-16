@@ -2,7 +2,7 @@
 Figures:  fig04a_saturation_whiskers (Figure 4.13)   RMSE over n_D = 1..5 of the three AL strategies (MGE) against the Random expectation; medians over the starts, quartiles as whiskers
           fig07_path_ecdf (Figure 4.14)              distribution of the path outcomes: Random paths against the AL path of each UQ method
           fig05_pick_map (Figure 4.15)               acquired simulations (AL pooled over LA / DE / MoLA vs Random) on the 5 x 5 operating grid
-          fig06_error_ratio (Figure B.9)             per-simulation RMSE ratio AL / Random expectation (geometric mean over starts and methods)
+          fig06_error_ratio (Figure B.10)            per-simulation RMSE ratio AL / Random expectation (geometric mean over starts and methods)
 Tables (tabular only):  tableA_al_vs_random, tableA_path_ecdf; the authored tables table_ded_{settings,data,training} are copied from figures/authored_tables/.
 Cohort: all starts whose three AL streams and whose Random tails are complete for n_D = 1..5 in both architectures (ten starts). Error of a node = median of the K = 3 member RMSEs over ALL 25 simulations (training trajectories included, no held-out set);
 Random expectation of a start = mean over its Random tails. Run records are read through ded_results_io.py; the numbers behind every figure and table are written to final_audit/figure_data/*.csv. No bootstrap intervals.
@@ -88,7 +88,7 @@ def tables(PS, nmax=5):
     (EP.TAB_APP / "tableA_al_vs_random.tex").write_text("\n".join(C) + "\n")
 
 
-# ------------------------------------------------------------------------------------------------ Figures 4.15 and B.9: the 5 x 5 operating grid (x = source speed v, y = source power Q; cell id = 5 * power index + speed index)
+# ------------------------------------------------------------------------------------------------ Figures 4.15 and B.10: the 5 x 5 operating grid (x = source speed v, y = source power Q; cell id = 5 * power index + speed index)
 V = [10, 12.5, 15, 17.5, 20]; Q = [300, 350, 400, 450, 500]; CORNERS = [0, 4, 20, 24]
 
 
@@ -138,7 +138,7 @@ def fig_pick_map(d, runs, nmax=4):
 
 
 def fig_error_ratio(d, runs, nmax=4):
-    """Figure B.9: per simulation, RMSE of the AL model divided by the Random expectation (mean over the Random tails of the start) of the same start; geometric mean over the starts and the three UQ methods.
+    """Figure B.10: per simulation, RMSE of the AL model divided by the Random expectation (mean over the Random tails of the start) of the same start; geometric mean over the starts and the three UQ methods.
     Diverging RdBu_r on log2 of the ratio (centred on 1, -2..2), unchanged."""
     from matplotlib.cm import ScalarMappable
     from matplotlib.colors import Normalize
